@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg2"
+    tools:context="com.tcsoft.searchmachinary.activity.MainActivity">
+
+    <include
+        android:id="@+id/title_base_main"
+        layout="@layout/layout_base" />
+
+    <LinearLayout
+        android:id="@+id/ll_book_push_main"
+        style="@style/LlBookPush"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title_base_main">
+
+        <RelativeLayout
+            android:id="@+id/rl_new_book_main"
+            style="@style/RlBookPush"
+            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_new_book" />
+
+
+            <TextView
+                android:id="@+id/tv_big_new_main"
+                style="@style/TvBookPushFontBig"
+                android:text="@string/new_font"
+                />
+
+            <TextView
+                android:text="@string/new_book"
+                android:layout_toEndOf="@id/tv_big_new_main"
+                android:layout_toRightOf="@id/tv_big_new_main"
+                style="@style/TvBookPushFont"
+                />
+
+
+            <TextView
+                android:layout_below="@id/tv_big_new_main"
+                android:text="@string/new_book_english"
+                style="@style/TvBookPushFontEnglish"
+                />
+
+
+            <ImageView
+                style="@style/IvTriangle"
+                android:contentDescription="@string/guider" />
+
+
+            <TextView
+                android:text="@string/new_font_english"
+                style="@style/TvBookPushFontBigEnglish"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_hot_book_main"
+            style="@style/RlBookPush"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_hot_book" />
+
+            <TextView
+                android:id="@+id/tv_big_hot_main"
+                android:text="@string/hot_font"
+                style="@style/TvBookPushFontBig"
+                />
+
+            <TextView
+                android:layout_toRightOf="@id/tv_big_hot_main"
+                android:text="@string/hot_book"
+                style="@style/TvBookPushFont"
+                android:layout_toEndOf="@id/tv_big_hot_main" />
+
+            <TextView
+                android:text="@string/hot_book_english"
+                android:layout_below="@id/tv_big_hot_main"
+                style="@style/TvBookPushFontEnglish"/>
+
+
+            <ImageView
+                style="@style/IvTriangle"
+                android:contentDescription="@string/guider" />
+
+            <TextView
+                android:text="@string/hot_font_english"
+                style="@style/TvBookPushFontBigEnglish" />
+
+
+        </RelativeLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ll_input_search_text"
+        style="@style/LlInputText"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        app:layout_constraintTop_toBottomOf="@id/ll_book_push_main"
+        >
+
+
+        <EditText
+            android:id="@+id/et_search_main"
+            android:hint="@string/search_hint"
+            style="@style/EtInputText" />
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="0.1"
+            android:orientation="horizontal"
+            android:layout_marginStart="10dp">
+
+            <TextView
+                android:id="@+id/tv_btn_search_main"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_search"
+                android:textColor="#2FB28B"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ll_notification_main"
+        style="@style/LlNotification"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_input_search_text">
+
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="14dp"
+            android:src="@drawable/icon_notification"
+            android:contentDescription="@string/guider" />
+
+        <TextView
+            android:id="@+id/tv_title_notification_main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:layout_marginStart="4dp"
+            android:text="@string/notification"
+            android:textColor="@android:color/white"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_notification_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginStart="2dp"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:singleLine="true"
+
+            android:text="@string/notification_content"
+            android:textColor="@android:color/white"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/rl_callNo_main"
+        style="@style/LlCallno"
+        app:layout_constraintTop_toBottomOf="@id/ll_notification_main">
+
+
+        <RelativeLayout
+            style="@style/RlTurnCallno">
+            <ImageView
+                android:id="@+id/iv_left_callno_main"
+                android:src="@drawable/icon_arrow_left"
+                android:contentDescription="@string/guider"
+                style="@style/IvTurnCallno"
+                />
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            style="@style/LlCallnoText"
+            android:baselineAligned="false">
+
+
+            <LinearLayout
+                style="@style/LlCallnoContent">
+
+                <RelativeLayout
+                    style="@style/RlCallnoShelf">
+
+                    <TextView
+                        android:text="@string/shelf_face_a"
+                        style="@style/TvCallnoShelf" />
+
+                </RelativeLayout>
+
+                <ImageView
+                    style="@style/IvCallnoShelf"
+                    android:contentDescription="@string/guider" />
+
+                <TextView
+                    android:text="@string/shelf_callno_a"
+                    style="@style/TvCallnoShelfNumber"
+                    />
+
+                <TextView
+                    android:text="@string/shelf_callno_a_class"
+                    style="@style/TvCallnoShelfContent" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                style="@style/LlCallnoContent">
+
+                <RelativeLayout
+                    style="@style/RlCallnoShelf">
+
+                    <TextView
+                        android:text="@string/shelf_face_b"
+                        style="@style/TvCallnoShelf" />
+
+                </RelativeLayout>
+
+                <ImageView
+                    style="@style/IvCallnoShelf"
+                    android:contentDescription="@string/guider" />
+
+                <TextView
+                    android:text="@string/shelf_callno_b"
+                    style="@style/TvCallnoShelfNumber"
+                    />
+
+                <TextView
+                    android:text="@string/shelf_callno_b_class"
+                    style="@style/TvCallnoShelfContent" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+        <RelativeLayout
+            style="@style/RlTurnCallno">
+            <ImageView
+                android:id="@+id/iv_right_callno_main"
+                android:src="@drawable/icon_arrow_right"
+                android:contentDescription="@string/guider"
+                style="@style/IvTurnCallno"
+                />
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/rl_consult_main"
+        style="@style/RlConsult"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rl_callNo_main">
+        <ImageView
+            style="@style/IvConsult"
+            android:contentDescription="@string/guider" />
+
+    </RelativeLayout>
+
+
+</android.support.constraint.ConstraintLayout>

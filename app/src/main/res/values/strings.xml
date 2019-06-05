@@ -1,0 +1,61 @@
+<resources>
+    <string name="app_name">查询机</string>
+
+    <!--base-->
+    <string name="clock_base">12:12</string>
+    <string name="date_base">2012年12月12日</string>
+    <string name="name_base">图书查询终端</string>
+    <string name="temperature">20°</string>
+    <string name="weather">雨转晴</string>
+    <string name="location">IN 广州</string>
+    <string name="guider">guider</string>
+
+    <!--main-->
+    <string name="new_font">新</string>
+    <string name="new_font_english">NEW</string>
+    <string name="new_book">书推荐</string>
+    <string name="new_book_english">New books</string>
+    <string name="hot_font">热</string>
+    <string name="hot_font_english">HOT</string>
+    <string name="hot_book">门图书</string>
+    <string name="hot_book_english">Popular books</string>
+
+    <string name="search_hint">输入书籍信息</string>
+    <string name="btn_search">搜索</string>
+    <string name="key_search">关键词：</string>
+
+    <string name="notification">公告：</string>
+    <string name="notification_content">因下周需进行在架图书盘点，故只办理还书手续，暂不外借图书，敬请原谅。</string>
+    <string name="notification_content_dialog">一，图书馆将于本学期第一周进行在架图书盘点工作，顾开学第一周内只办理还书手续，暂不外借图书，请各位读者理解，并相互转告，谢谢您的合作与配合。\n\n二，各位同学：为了方便图书馆读者存放书籍，本学期图书馆免费向广大同学发放存包柜，本学期的存包柜使用期限为3月6日到放假前一周。</string>
+
+    <string name="shelf_face_a">23A</string>
+    <string name="shelf_face_b">23B</string>
+    <string name="shelf_callno_a">D925.3 ~ D920.0</string>
+    <string name="shelf_callno_b">D920.1 ~ D920.5</string>
+    <string name="shelf_callno_a_class">法学理论方针、政策及其阐述</string>
+    <string name="shelf_callno_b_class">经济学解释、案例</string>
+
+    <string name="title_notification">—— 馆内公告 ——</string>
+    <string name="library_name">某某图书馆</string>
+    <string name="time_notification">2012.12.12</string>
+
+
+    <!--search-->
+    <string name="new_book_title">新书推荐  NewBooks</string>
+    <string name="hot_book_title">热门图书  PopularBooks</string>
+    <string name="advise_book_title">图书馆智能咨询助手</string>
+    <string name="show_can_loan">仅显示可借图书</string>
+    <string name="back_press">返回</string>
+    <string name="all_question">常见问题</string>
+
+
+    <!--advise-->
+    <string name="title_assistant">智能咨询助手为您服务</string>
+    <string name="send_assistant">发送</string>
+    <string name="send_hint">请输入您想咨询的问题...</string>
+    <string name="service_response">常见问题：\n1）找不到检索信息显示的图书\n2）图书都被借阅了，如何预约图书\n3）图书馆没有我想要的图书</string>
+    <string name="service_question">图书馆没有我想要的那本书</string>
+
+
+
+</resources>
