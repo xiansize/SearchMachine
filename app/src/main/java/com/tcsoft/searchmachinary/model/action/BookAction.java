@@ -1,7 +1,7 @@
 package com.tcsoft.searchmachinary.model.action;
 
 import com.tcsoft.searchmachinary.bean.Book;
-import com.tcsoft.searchmachinary.model.listener.BookListener;
+import com.tcsoft.searchmachinary.model.listener.ActionListener;
 
 import java.util.List;
 
@@ -11,14 +11,14 @@ import java.util.List;
 
 public interface BookAction {
 
-    void newBook(BookListener<List<Book>> listener);
+    void newBook(ActionListener<List<Book>> listener);
 
-    void hotBook(BookListener<List<Book>> listener);
+    void hotBook(ActionListener<List<Book>> listener);
 
-    void searchBook(String title,String page,BookListener<List<Book>> listener);
+    void searchBook(String title,String page,ActionListener<List<Book>> listener);
 
-    void getBookDetails(String recNo,BookListener<List<Book>> listener);
+    void getBookDetails(String recNo,ActionListener<List<Book>> listener);
 
-    void consultant(String msg,BookListener<List<Book>> listener);
+    void consultant(String msg,ActionListener<List<Book>> listener);
 
 }

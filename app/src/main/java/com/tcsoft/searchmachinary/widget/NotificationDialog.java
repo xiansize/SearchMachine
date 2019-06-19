@@ -1,4 +1,4 @@
-package com.tcsoft.searchmachinary.view;
+package com.tcsoft.searchmachinary.widget;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -10,6 +10,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 
 import com.tcsoft.searchmachinary.R;
 
@@ -24,10 +25,13 @@ public class NotificationDialog extends Dialog implements View.OnClickListener {
     private String date;
 
 
-    public NotificationDialog(@NonNull Context context, int layoutId) {
+    public NotificationDialog(@NonNull Context context, int layoutId,String content,String libName,String date) {
         super(context, R.style.SearchDialog);
         this.context = context;
         this.layoutId = layoutId;
+        this.content = content;
+        this.libName = libName;
+        this.date = date;
     }
 
 
@@ -47,7 +51,15 @@ public class NotificationDialog extends Dialog implements View.OnClickListener {
         setCanceledOnTouchOutside(true);
 
         //btn dismiss
-        findViewById(R.id.rl_dismiss_notification_layout).setOnClickListener(this);
+        findViewById(R.id.rl_dismiss_notice_layout).setOnClickListener(this);
+
+        TextView tvContent = findViewById(R.id.tv_content_dialog);
+        tvContent.setText(content);
+        TextView tvLibName = findViewById(R.id.tv_lib_name_notice_layout);
+        tvLibName.setText(libName);
+        TextView tvDate = findViewById(R.id.tv_time_notice_layout);
+        tvDate.setText(date);
+
 
     }
 

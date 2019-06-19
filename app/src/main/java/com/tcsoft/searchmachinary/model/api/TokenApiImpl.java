@@ -1,5 +1,6 @@
 package com.tcsoft.searchmachinary.model.api;
 
+import com.tcsoft.searchmachinary.config.Config;
 import com.tcsoft.searchmachinary.config.Constant;
 import com.tcsoft.searchmachinary.model.network.HttpUtil;
 
@@ -12,6 +13,6 @@ public class TokenApiImpl implements TokenApi{
 
     @Override
     public String getToken() {
-        return HttpUtil.httpGet(Constant.PATH_OPEN_LIB + "/service/barcode/token?appid="+Constant.ID_OPEB_LIB+"&secret="+Constant.PASS_OPEN_LIB);
+        return HttpUtil.httpGet(Config.PATH_OPEN_LIB + "/service/barcode/token?appid="+Config.ID_OPEB_LIB+"&secret="+Config.PASS_OPEN_LIB);
     }
 }

@@ -2,34 +2,41 @@ package com.tcsoft.searchmachinary.activity;
 
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import com.tcsoft.searchmachinary.R;
-import com.tcsoft.searchmachinary.utils.TimeUtil;
-import com.tcsoft.searchmachinary.view.NotificationDialog;
+import com.tcsoft.searchmachinary.config.Constant;
+import com.tcsoft.searchmachinary.presenter.MainPresenter;
+import com.tcsoft.searchmachinary.view.MainView;
+import com.tcsoft.searchmachinary.widget.NotificationDialog;
+import static com.tcsoft.searchmachinary.config.Constant.weather;
 
-public class MainActivity extends BaseActivity implements View.OnClickListener {
+public class MainActivity extends BaseActivity implements View.OnClickListener, MainView {
 
     private EditText etSearch;
+    private MainPresenter mainPresenter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        init();
         initView();
     }
 
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        TextView tvMin = findViewById(R.id.tv_clock_base);
-        tvMin.setText(TimeUtil.getTimeMin());
-        TextView tvDate = findViewById(R.id.tv_date_base);
-        tvDate.setText(TimeUtil.getTimeDate());
+    private void init() {
+        mainPresenter = new MainPresenter(this, this);
+        mainPresenter.attachView(this);
+        mainPresenter.getPermissionStorage();
+        mainPresenter.initFile();
+        mainPresenter.getNoticeContent();
+        mainPresenter.getWeatherInfo();
     }
 
 
@@ -45,6 +52,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         TextView tvSearch = findViewById(R.id.tv_btn_search_main);
         tvSearch.setOnClickListener(this);
         TextView tvNotification = findViewById(R.id.tv_notification_main);
+        tvNotification.setText(Constant.noticeContent);
         tvNotification.setSelected(true);
         tvNotification.setOnClickListener(this);
     }
@@ -63,7 +71,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 switchActivity(this, AdviseActivity.class, "TITLE", getString(R.string.advise_book_title));
                 break;
             case R.id.tv_notification_main:
-                NotificationDialog notificationDialog = new NotificationDialog(this, R.layout.layout_dialog_notification);
+                NotificationDialog notificationDialog = new NotificationDialog(this, R.layout.layout_dialog_notification, Constant.noticeContent, Constant.libName, Constant.noticeDate);
                 notificationDialog.show();
                 break;
             case R.id.tv_btn_search_main:
@@ -73,4 +81,35 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 break;
         }
     }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mainPresenter.detachView();
+    }
+
+
+    @Override
+    public void showWeather() {
+        TextView tvTemperature, tvWeather, tvCityName;
+        ImageView ivWeather;
+        tvTemperature = findViewById(R.id.tv_temp_base);
+        tvWeather = findViewById(R.id.tv_weather_base);
+        tvCityName = findViewById(R.id.tv_location_base);
+        ivWeather = findViewById(R.id.iv_weather_base);
+        tvTemperature.setText(weather.getTemperature());
+        tvWeather.setText(weather.getWeather());
+        tvCityName.setText(weather.getCityName());
+        ivWeather.setImageResource(weather.getIcon());
+    }
+
+
+
 }

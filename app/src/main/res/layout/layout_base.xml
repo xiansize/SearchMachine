@@ -17,19 +17,19 @@
         android:layout_marginLeft="24dp"
         android:layout_marginStart="24dp">
 
-        <TextView
+        <com.tcsoft.searchmachinary.widget.CustomTimeView
             android:id="@+id/tv_clock_base"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="33dp"
+            android:textSize="33sp"
             android:textColor="#FFFFFF"
             android:text="@string/clock_base"/>
 
-        <TextView
+        <com.tcsoft.searchmachinary.widget.DateTimeView
             android:id="@+id/tv_date_base"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="10dp"
+            android:textSize="10sp"
             android:textColor="#FFFFFF"
             android:text="@string/date_base"
            />
@@ -73,7 +73,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/temperature"
                 android:textColor="#FFFFFF"
-                android:textSize="20dp"/>
+                android:textSize="20sp"/>
 
             <TextView
                 android:id="@+id/tv_weather_base"

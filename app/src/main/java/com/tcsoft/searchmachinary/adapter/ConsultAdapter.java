@@ -14,9 +14,6 @@ import com.tcsoft.searchmachinary.bean.Consult;
 
 import java.util.List;
 
-/**
- * Created by Admin on 2019/5/17.
- */
 
 public class ConsultAdapter extends RecyclerView.Adapter<ConsultAdapter.ViewHolder> {
 
@@ -39,11 +36,11 @@ public class ConsultAdapter extends RecyclerView.Adapter<ConsultAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         if (list.get(position).isClient()) {
-            holder.rlService.setVisibility(View.GONE);
+            holder.rlService.setVisibility(View.INVISIBLE);
             holder.tvClientText.setText(list.get(position).getText());
             holder.tvClientTime.setText(list.get(position).getTime());
         } else {
-            holder.rlClient.setVisibility(View.GONE);
+            holder.rlClient.setVisibility(View.INVISIBLE);
             holder.tvServiceText.setText(list.get(position).getText());
             holder.tvServiceTime.setText(list.get(position).getTime());
         }
@@ -62,7 +59,7 @@ public class ConsultAdapter extends RecyclerView.Adapter<ConsultAdapter.ViewHold
         private TextView tvServiceTime;
         private TextView tvClientTime;
 
-        ViewHolder(View view) {
+        private ViewHolder(View view) {
             super(view);
             tvServiceText = view.findViewById(R.id.tv_context_service);
             tvClientText = view.findViewById(R.id.tv_context_client);

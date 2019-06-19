@@ -9,6 +9,7 @@
     <string name="weather">雨转晴</string>
     <string name="location">IN 广州</string>
     <string name="guider">guider</string>
+    <string name="cover">cover</string>
 
     <!--main-->
     <string name="new_font">新</string>

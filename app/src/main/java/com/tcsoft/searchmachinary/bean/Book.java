@@ -7,17 +7,25 @@ import java.util.List;
  */
 public class Book {
 
+
     private String title;
     private String author;
     private String publisher;
     private String callNo;
-
     private String isbn;
     private String price;
     private String page;
     private String size;
     private String summary;
-    private List<Holding> hList;
+    private String cover;
+
+    public String getCover() {
+        return cover;
+    }
+
+    public void setCover(String cover) {
+        this.cover = cover;
+    }
 
     public String getTitle() {
         return title;
@@ -91,17 +99,7 @@ public class Book {
         this.summary = summary;
     }
 
-    public List<Holding> gethList() {
-        return hList;
-    }
 
-    public void sethList(List<Holding> hList) {
-        this.hList = hList;
-    }
 
-    private class Holding{
-        private String barcode;
-        private String shelfNo;
-        private String curlocal;
-    }
+
 }

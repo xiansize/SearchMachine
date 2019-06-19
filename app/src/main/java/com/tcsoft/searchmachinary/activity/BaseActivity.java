@@ -8,10 +8,13 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
 
+import com.tcsoft.searchmachinary.utils.ToastUtil;
+import com.tcsoft.searchmachinary.view.BaseView;
+
 /**
  * Created by Admin on 2019/5/5.
  */
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity implements BaseView{
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -34,5 +37,13 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void showToast(String msg) {
+        ToastUtil.showToast(this,msg);
+    }
 
+    @Override
+    public Context getContext() {
+        return BaseActivity.this;
+    }
 }
