@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -55,25 +54,6 @@
                 android:layout_below="@id/rv_advise"
                 android:background="@drawable/shape_send">
 
-                <RelativeLayout
-                    android:id="@+id/rl_btn_send_advise"
-                    android:layout_width="60dp"
-                    android:layout_height="22dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="10dp"
-                    android:background="#75A7CE">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:text="@string/send_assistant"
-                        android:textColor="@android:color/white"
-                        android:textSize="10sp" />
-
-                </RelativeLayout>
-
 
                 <LinearLayout
                     android:id="@+id/ll_question_advise"
@@ -100,6 +80,22 @@
                         android:textSize="10sp" />
 
                 </LinearLayout>
+
+
+                <Button
+                    android:id="@+id/btn_send_advise"
+                    android:layout_width="60dp"
+                    android:layout_height="22dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:text="@string/send_assistant"
+                    android:textColor="@android:color/white"
+                    android:textSize="10sp"
+                    android:background="#75A7CE">
+
+
+                </Button>
 
 
             </RelativeLayout>

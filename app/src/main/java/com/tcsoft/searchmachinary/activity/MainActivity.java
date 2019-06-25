@@ -6,13 +6,16 @@ import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
 import com.tcsoft.searchmachinary.R;
 import com.tcsoft.searchmachinary.config.Constant;
 import com.tcsoft.searchmachinary.presenter.MainPresenter;
 import com.tcsoft.searchmachinary.view.MainView;
 import com.tcsoft.searchmachinary.widget.NotificationDialog;
+
 import static com.tcsoft.searchmachinary.config.Constant.weather;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener, MainView {
@@ -30,13 +33,19 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     }
 
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mainPresenter.getWeatherInfo();
+    }
+
     private void init() {
         mainPresenter = new MainPresenter(this, this);
         mainPresenter.attachView(this);
         mainPresenter.getPermissionStorage();
         mainPresenter.initFile();
         mainPresenter.getNoticeContent();
-        mainPresenter.getWeatherInfo();
+        mainPresenter.getToken();
     }
 
 
@@ -49,8 +58,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         rlHotBook.setOnClickListener(this);
         RelativeLayout rlConsult = findViewById(R.id.rl_consult_main);
         rlConsult.setOnClickListener(this);
-        TextView tvSearch = findViewById(R.id.tv_btn_search_main);
-        tvSearch.setOnClickListener(this);
+        LinearLayout llSearch = findViewById(R.id.ll_btn_search_main);
+        llSearch.setOnClickListener(this);
         TextView tvNotification = findViewById(R.id.tv_notification_main);
         tvNotification.setText(Constant.noticeContent);
         tvNotification.setSelected(true);
@@ -74,7 +83,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 NotificationDialog notificationDialog = new NotificationDialog(this, R.layout.layout_dialog_notification, Constant.noticeContent, Constant.libName, Constant.noticeDate);
                 notificationDialog.show();
                 break;
-            case R.id.tv_btn_search_main:
+            case R.id.ll_btn_search_main:
                 String search = etSearch.getText().toString().trim();
                 if (!search.equals(""))
                     switchActivity(this, SearchActivity.class, "TITLE", getString(R.string.key_search) + search);
@@ -109,7 +118,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         tvCityName.setText(weather.getCityName());
         ivWeather.setImageResource(weather.getIcon());
     }
-
 
 
 }

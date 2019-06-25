@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#F5F5F5"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:id="@+id/rl_container_service"
+        style="@style/ContainerAdvise">
+
+        <RelativeLayout
+            android:id="@+id/rl_icon_service"
+            style="@style/ContainerIconAdvise"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/shape_icon_service">
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/icon_service" />
+
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/tv_context_service"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/rl_icon_service"
+            android:background="@android:color/white"
+            android:padding="6dp"
+            android:textSize="12sp"
+            android:lineSpacingExtra="4dp"
+            android:text="@string/service_response"
+            android:textColor="#444444" />
+
+
+        <TextView
+            android:id="@+id/tv_time_service"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_context_service"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="4dp"
+            android:layout_toRightOf="@id/rl_icon_service"
+            android:text="@string/time_notification"
+            android:textColor="#999999"
+            android:textSize="10sp" />
+
+
+    </RelativeLayout>
+
+</LinearLayout>

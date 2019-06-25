@@ -2,10 +2,6 @@ package com.tcsoft.searchmachinary.presenter;
 
 import com.tcsoft.searchmachinary.view.BaseView;
 
-/**
- * Created by Admin on 2019/6/18.
- */
-
 public class BasePresenter<V extends BaseView>{
 
     /**
@@ -29,7 +25,7 @@ public class BasePresenter<V extends BaseView>{
      * 是否与View建立连接
      * 每次调用业务请求的时候都要出先调用方法检查是否与View建立连接
      */
-    public boolean isViewAttached(){
+     boolean isViewAttached(){
         return baseView != null;
     }
     /**

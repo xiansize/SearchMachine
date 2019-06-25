@@ -14,6 +14,8 @@ public interface BookApi {
 
     String getBookDetails(String recNo);
 
+    String getBookCover(String isbn);
+
     String consultant(String msg);
 
 

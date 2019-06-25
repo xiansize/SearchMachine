@@ -8,12 +8,11 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
 
+import com.tcsoft.searchmachinary.bean.Book;
 import com.tcsoft.searchmachinary.utils.ToastUtil;
 import com.tcsoft.searchmachinary.view.BaseView;
 
-/**
- * Created by Admin on 2019/5/5.
- */
+
 public abstract class BaseActivity extends AppCompatActivity implements BaseView{
 
     @Override
@@ -32,6 +31,13 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
     public void switchActivity(Context context, Class<? extends Activity> aClass,String title,String content){
         Intent intent = new Intent(context,aClass);
         intent.putExtra(title,content);
+        startActivity(intent);
+        overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
+    }
+
+    public void switchActivity(Context context, Class<? extends Activity> aClass,String title,Book object){
+        Intent intent = new Intent(context,aClass);
+        intent.putExtra(title,  object);
         startActivity(intent);
         overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
     }

@@ -1,8 +1,5 @@
 package com.tcsoft.searchmachinary.bean;
 
-/**
- * Created by Admin on 2019/6/18.
- */
 
 public class Weather {
 

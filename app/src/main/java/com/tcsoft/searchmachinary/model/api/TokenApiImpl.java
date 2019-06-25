@@ -1,5 +1,7 @@
 package com.tcsoft.searchmachinary.model.api;
 
+import android.util.Log;
+
 import com.tcsoft.searchmachinary.config.Config;
 import com.tcsoft.searchmachinary.config.Constant;
 import com.tcsoft.searchmachinary.model.network.HttpUtil;

@@ -1,16 +1,16 @@
 package com.tcsoft.searchmachinary.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
-/**
- * Created by Admin on 2019/5/22.
- */
-public class Book {
+
+public class Book implements Serializable{
 
 
     private String title;
     private String author;
     private String publisher;
+    private String pubDate;
     private String callNo;
     private String isbn;
     private String price;
@@ -18,6 +18,68 @@ public class Book {
     private String size;
     private String summary;
     private String cover;
+    private String recNo;
+
+    private List<Holding> hList;
+
+    //可借
+    private int canLoanNum;
+    //全部
+    private int shelfNum;
+    //总借
+    private int loanNum;
+
+    public int getCanLoanNum() {
+        return canLoanNum;
+    }
+
+    public void setCanLoanNum(int canLoanNum) {
+        this.canLoanNum = canLoanNum;
+    }
+
+    public int getShelfNum() {
+        return shelfNum;
+    }
+
+    public void setShelfNum(int shelfNum) {
+        this.shelfNum = shelfNum;
+    }
+
+    public int getLoanNum() {
+        return loanNum;
+    }
+
+    public void setLoanNum(int loanNum) {
+        this.loanNum = loanNum;
+    }
+
+
+
+
+    public String getPubDate() {
+        return pubDate;
+    }
+
+    public void setPubDate(String pubDate) {
+        this.pubDate = pubDate;
+    }
+
+
+    public List<Holding> gethList() {
+        return hList;
+    }
+
+    public void sethList(List<Holding> hList) {
+        this.hList = hList;
+    }
+
+    public String getRecNo() {
+        return recNo;
+    }
+
+    public void setRecNo(String recNo) {
+        this.recNo = recNo;
+    }
 
     public String getCover() {
         return cover;
@@ -98,6 +160,7 @@ public class Book {
     public void setSummary(String summary) {
         this.summary = summary;
     }
+
 
 
 

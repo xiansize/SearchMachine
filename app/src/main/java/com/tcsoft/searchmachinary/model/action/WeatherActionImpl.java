@@ -50,6 +50,8 @@ public class WeatherActionImpl implements WeatherAction {
                                 break;
                             case "雨":weather.setIcon(R.drawable.icon_weather_rainy);
                                 break;
+                            case "阴":weather.setIcon(R.drawable.icon_weather_overcast);
+                                break;
                             case "多云":weather.setIcon(R.drawable.icon_weather_cloudy);
                                 break;
                         }

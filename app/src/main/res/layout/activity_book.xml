@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/bg2"
     tools:context="com.tcsoft.searchmachinary.activity.BookActivity">
 
@@ -21,9 +20,112 @@
 
         <include
             android:id="@+id/ll_key_base"
-            layout="@layout/layout_backpress"/>
+            layout="@layout/layout_backpress" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="360dp"
+            android:layout_below="@id/ll_key_base"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:orientation="horizontal"
+            android:background="#22FFFFFF">
 
 
+            <LinearLayout
+                android:id="@+id/ll_cover_book_details"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.4"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:layout_marginTop="10dp">
+
+                <ImageView
+                    android:id="@+id/iv_cover_book_details"
+                    android:layout_width="64dp"
+                    android:layout_height="84dp"
+                    android:background="@drawable/icon_nocover"
+                    android:contentDescription="@string/cover" />
+
+
+                <TextView
+                    android:id="@+id/tv_canloan_book_details"
+                    style="@style/TvBookInfoBookDetailsItem"
+                    android:layout_marginTop="10dp"/>
+
+                <TextView
+                    android:id="@+id/tv_shelf_num_book_details"
+                    style="@style/TvBookInfoBookDetailsItem" />
+
+                <TextView
+                    android:id="@+id/tv_reading_num_book_details"
+                    style="@style/TvBookInfoBookDetailsItem" />
+
+
+            </LinearLayout>
+
+
+
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="7.6"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:id="@+id/tv_title_book_details"
+                    style="@style/TvBookInfoBookDetailsItem"
+                    android:layout_marginBottom="4dp"
+                    android:textSize="12sp" />
+
+
+                <TextView
+                    android:id="@+id/tv_author_book_details"
+                    style="@style/TvBookInfoBookDetailsItem" />
+
+                <TextView
+                    android:id="@+id/tv_publisher_book_details"
+                    style="@style/TvBookInfoBookDetailsItem" />
+
+
+                <TextView
+                    android:id="@+id/tv_isbn_book_details"
+                    style="@style/TvBookInfoBookDetailsItem" />
+
+                <TextView
+                    android:id="@+id/tv_price_book_details"
+                    style="@style/TvBookInfoBookDetailsItem" />
+
+                <TextView
+                    android:id="@+id/tv_shape_book_details"
+                    style="@style/TvBookInfoBookDetailsItem" />
+
+                <TextView
+                    android:id="@+id/tv_shape_book_summary"
+                    style="@style/TvBookInfoBookDetailsItem"
+                    android:maxLines="6"/>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_holding_book_details"
+                    android:layout_marginTop="12dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+
+
+
+
+
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
 
 
     </RelativeLayout>

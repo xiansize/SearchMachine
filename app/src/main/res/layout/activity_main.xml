@@ -124,11 +124,13 @@
 
 
         <LinearLayout
+            android:id="@+id/ll_btn_search_main"
             android:layout_width="0dp"
-            android:layout_height="20dp"
+            android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
             android:layout_weight="0.1"
             android:orientation="horizontal"
+            android:gravity="center_vertical"
             android:layout_marginStart="10dp">
 
             <TextView

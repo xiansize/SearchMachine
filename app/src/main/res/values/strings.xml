@@ -58,5 +58,18 @@
     <string name="service_question">图书馆没有我想要的那本书</string>
 
 
+    <!--bookdetails-->
+    <string name="book_details">图书详情</string>
+    <string name="book_author">作者：%s</string>
+    <string name="book_publisher">发行出版：%s/%s</string>
+    <string name="book_isbn">ISBN：%s</string>
+    <string name="book_price">定价：%s</string>
+    <string name="book_shape">载体形态：%s %s</string>
+    <string name="book_summary">内容简介：%s </string>
+
+    <string name="book_canloan">可借册数：%d册</string>
+    <string name="book_shelf_num">馆藏册数：%d册</string>
+    <string name="book_reading_num">总借阅量：%d次</string>
+
 
 </resources>

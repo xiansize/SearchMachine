@@ -13,29 +13,23 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Admin on 2019/6/19.
- */
 
 public class FileUtil {
     private static final String TAG = "FileUtil";
 
 
-    public static boolean initFile() {
-        boolean mkdirs = false, newFile = false;
+    public static void initFile() {
         File dir = new File(Environment.getExternalStorageDirectory() + Config.DIRS_CONFIG);
         if (!dir.exists()) {
-            mkdirs = dir.mkdirs();
+             dir.mkdirs();
         }
 
         File file = new File(Environment.getExternalStorageDirectory() + Config.DIRS_CONFIG + Config.FILE_CONFIG);
         if (!file.exists()) try {
-            newFile = file.createNewFile();
+            file.createNewFile();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        return mkdirs && newFile;
     }
 
 

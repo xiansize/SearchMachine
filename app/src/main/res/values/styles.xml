@@ -234,4 +234,24 @@
         <item name="android:ellipsize">end</item>
     </style>
 
+    <!--book details info-->
+    <style name="TvBookInfoBookDetailsItem">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">2dp</item>
+        <item name="android:textSize">9sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <!--book item holding-->
+    <style name="RlItemHoldingContainer">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/shape_item_holding</item>
+    </style>
+
+
+
 </resources>

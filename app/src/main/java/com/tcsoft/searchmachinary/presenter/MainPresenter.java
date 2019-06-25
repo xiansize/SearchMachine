@@ -12,6 +12,8 @@ import com.tcsoft.searchmachinary.bean.Weather;
 import com.tcsoft.searchmachinary.config.Constant;
 import com.tcsoft.searchmachinary.model.action.FileAction;
 import com.tcsoft.searchmachinary.model.action.FileActionImpl;
+import com.tcsoft.searchmachinary.model.action.TokenAction;
+import com.tcsoft.searchmachinary.model.action.TokenActionImpl;
 import com.tcsoft.searchmachinary.model.action.WeatherAction;
 import com.tcsoft.searchmachinary.model.action.WeatherActionImpl;
 import com.tcsoft.searchmachinary.model.listener.ActionListener;
@@ -28,7 +30,7 @@ public class MainPresenter extends BasePresenter<MainView> {
     private Context context;
     private FileAction fileAction;
     private WeatherAction weatherAction;
-
+    private TokenAction tokenAction;
 
 
 
@@ -37,6 +39,7 @@ public class MainPresenter extends BasePresenter<MainView> {
         this.context = context;
         this.fileAction = new FileActionImpl();
         this.weatherAction = new WeatherActionImpl();
+        this.tokenAction = new TokenActionImpl();
     }
 
 
@@ -64,6 +67,8 @@ public class MainPresenter extends BasePresenter<MainView> {
     }
 
 
+
+
     public void getWeatherInfo() {
         if (!isViewAttached()) return;
         weatherAction.getWeatherInfo(new ActionListener<Weather>() {
@@ -79,6 +84,11 @@ public class MainPresenter extends BasePresenter<MainView> {
             }
         });
 
+    }
+
+
+    public void getToken(){
+        tokenAction.getToken();
     }
 
 

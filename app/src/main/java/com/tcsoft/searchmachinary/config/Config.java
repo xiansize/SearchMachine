@@ -7,8 +7,10 @@ package com.tcsoft.searchmachinary.config;
 public class Config {
 
 
-
-    public static final String PATH_OPEN_LIB = "http://121.8.227.21:8889/openlib";
+    //openlib地址:本地
+    public static final String PATH_OPEN_LIB = "http://10.10.6.98:28098/openlib";
+    //openlib地址:外网
+    //public static final String PATH_OPEN_LIB = "http://113.65.161.129:28098/openlib";
     //openlib id
     public static final String ID_OPEB_LIB = "atmopeninterface";
     //openlib password

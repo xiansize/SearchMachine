@@ -16,7 +16,7 @@ public class Constant {
     public static String noticeDate = "";
     public static String cityCode = "";
 
-    public static Weather weather = null;
+    public static Weather weather = new Weather();
 
 
 }
