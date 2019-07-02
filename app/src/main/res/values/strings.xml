@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">查询机</string>
 
+    <!--index-->
+    <string name="init">初始化…</string>
+    <string name="permisson_failed">授权失败，请授权</string>
+
     <!--base-->
     <string name="clock_base">12:12</string>
     <string name="date_base">2012年12月12日</string>
@@ -48,13 +52,21 @@
     <string name="show_can_loan">仅显示可借图书</string>
     <string name="back_press">返回</string>
     <string name="all_question">常见问题</string>
+    <string name="search_no_result">无“%s”相关图书</string>
+    <string name="search_loading">加载中…</string>
+    <string name="search_end">没有更多了。</string>
+
+
+    <!--hotbook-->
+    <string name="total_reading">借阅量总</string>
+    <string name="total_reading_count">%d次</string>
 
 
     <!--advise-->
     <string name="title_assistant">智能咨询助手为您服务</string>
     <string name="send_assistant">发送</string>
-    <string name="send_hint">请输入您想咨询的问题...</string>
-    <string name="service_response">常见问题：\n1）找不到检索信息显示的图书\n2）图书都被借阅了，如何预约图书\n3）图书馆没有我想要的图书</string>
+    <string name="send_hint">请输入您想咨询的问题…</string>
+    <string name="service_response">常见问题：\n1）图书馆开馆时间\n2）如何借书\n3）了解节假日</string>
     <string name="service_question">图书馆没有我想要的那本书</string>
 
 
@@ -71,5 +83,9 @@
     <string name="book_shelf_num">馆藏册数：%d册</string>
     <string name="book_reading_num">总借阅量：%d次</string>
 
+    <!--bookholding-->
+    <string name="book_barcode">条码号</string>
+    <string name="book_location">馆藏位置</string>
+    <string name="book_status">书状态</string>
 
 </resources>

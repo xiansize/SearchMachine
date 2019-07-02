@@ -28,18 +28,18 @@
             android:layout_below="@id/ll_key_base"
             android:layout_marginLeft="12dp"
             android:layout_marginRight="12dp"
-            android:orientation="horizontal"
-            android:background="#22FFFFFF">
+            android:background="#22FFFFFF"
+            android:orientation="horizontal">
 
 
             <LinearLayout
                 android:id="@+id/ll_cover_book_details"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:layout_weight="2.4"
                 android:gravity="center_horizontal"
-                android:orientation="vertical"
-                android:layout_marginTop="10dp">
+                android:orientation="vertical">
 
                 <ImageView
                     android:id="@+id/iv_cover_book_details"
@@ -52,7 +52,7 @@
                 <TextView
                     android:id="@+id/tv_canloan_book_details"
                     style="@style/TvBookInfoBookDetailsItem"
-                    android:layout_marginTop="10dp"/>
+                    android:layout_marginTop="10dp" />
 
                 <TextView
                     android:id="@+id/tv_shelf_num_book_details"
@@ -66,15 +66,12 @@
             </LinearLayout>
 
 
-
-
-
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
+                android:layout_marginTop="10dp"
                 android:layout_weight="7.6"
-                android:layout_marginTop="10dp">
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/tv_title_book_details"
@@ -107,19 +104,19 @@
                 <TextView
                     android:id="@+id/tv_shape_book_summary"
                     style="@style/TvBookInfoBookDetailsItem"
-                    android:maxLines="6"/>
+                    android:layout_marginBottom="12dp"
+                    android:maxLines="6" />
+
+
+                <include
+                    layout="@layout/layout_item_holding_book_details"
+                    android:visibility="invisible"/>
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/rv_holding_book_details"
-                    android:layout_marginTop="12dp"
+
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
-
-
-
-
-
+                    android:layout_height="wrap_content" />
 
 
             </LinearLayout>

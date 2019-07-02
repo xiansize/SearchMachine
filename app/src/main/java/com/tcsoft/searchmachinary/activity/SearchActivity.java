@@ -16,6 +16,7 @@ import com.tcsoft.searchmachinary.adapter.SearchBookAdapter;
 import com.tcsoft.searchmachinary.bean.Book;
 import com.tcsoft.searchmachinary.presenter.SearchPresenter;
 import com.tcsoft.searchmachinary.view.SearchView;
+import com.tcsoft.searchmachinary.widget.LoadRecyclerViewOnScrollListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,8 +29,8 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
     private SearchPresenter searchPresenter;
     private SearchBookAdapter searchBookAdapter;
     private List<Book> searchList;
-    private TextView tvTitle;
     private CheckBox cbLoan;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,27 +44,30 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
     private void initView() {
         LinearLayout llBackpress = findViewById(R.id.ll_back_press_base);
         llBackpress.setOnClickListener(this);
-        cbLoan = findViewById(R.id.cb_can_loan);
-        cbLoan.setVisibility(View.INVISIBLE);
-        tvTitle = findViewById(R.id.tv_key_base);
+        TextView tvTitle = findViewById(R.id.tv_key_base);
         tvTitle.setText(getIntent().getStringExtra("TITLE"));
+        cbLoan = findViewById(R.id.cb_can_loan);
+
         RecyclerView rvSearch = findViewById(R.id.rv_search);
-        if (getIntent().getStringExtra("TITLE").equals(getResources().getString(R.string.hot_book_title)))
-            rvSearch.setLayoutManager(new GridLayoutManager(this, 1, LinearLayoutManager.VERTICAL, false));
-        else
-            rvSearch.setLayoutManager(new GridLayoutManager(this, 2, LinearLayoutManager.VERTICAL, false));
         searchList = new ArrayList<>();
         searchBookAdapter = new SearchBookAdapter(searchList, this);
         searchBookAdapter.setItemOnClickListener(this);
+        if (getIntent().getStringExtra("TITLE").equals(getResources().getString(R.string.hot_book_title))) {
+            searchBookAdapter.setRanking(true);
+            rvSearch.setLayoutManager(new GridLayoutManager(this, 1, LinearLayoutManager.VERTICAL, false));
+        } else
+            rvSearch.setLayoutManager(new GridLayoutManager(this, 2, LinearLayoutManager.VERTICAL, false));
         rvSearch.setAdapter(searchBookAdapter);
+        rvSearch.addOnScrollListener(new LoadingListener());
     }
 
 
     private void init() {
         searchPresenter = new SearchPresenter(this, this);
         searchPresenter.attachView(this);
+        searchPresenter.setSearchTitle(getIntent().getStringExtra("TITLE"));
         searchPresenter.showWeather();
-        searchPresenter.getList(tvTitle.getText().toString().trim(), cbLoan.isChecked());
+        searchPresenter.getList(cbLoan.isChecked());
 
     }
 
@@ -77,6 +81,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
                 break;
         }
     }
+
 
     @Override
     public void showWeather() {
@@ -92,10 +97,38 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
         ivWeather.setImageResource(weather.getIcon());
     }
 
+
     @Override
     public void showList(List<Book> list) {
         searchList.addAll(list);
         searchBookAdapter.notifyDataSetChanged();
+    }
+
+
+    @Override
+    public void showEnd() {
+        searchBookAdapter.setStatus_loading(0);
+
+    }
+
+    @Override
+    public void showHotBook(List<Book> list) {
+        searchList.addAll(list);
+        searchBookAdapter.setStatus_loading(0);
+    }
+
+    @Override
+    public void showNewBook(List<Book> list) {
+        searchList.addAll(list);
+        searchBookAdapter.notifyDataSetChanged();
+    }
+
+
+    @Override
+    public void showNoResult(String key) {
+        TextView tvNoResult = findViewById(R.id.tv_no_result_search);
+        tvNoResult.setVisibility(View.VISIBLE);
+        tvNoResult.setText(key);
     }
 
 
@@ -114,5 +147,14 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
     protected void onDestroy() {
         super.onDestroy();
         searchPresenter.detachView();
+    }
+
+
+    //loadmore
+    class LoadingListener extends LoadRecyclerViewOnScrollListener {
+        @Override
+        public void onLoadMore() {
+            searchPresenter.getList(cbLoan.isChecked());
+        }
     }
 }

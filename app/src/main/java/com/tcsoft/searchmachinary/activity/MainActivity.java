@@ -4,10 +4,12 @@ package com.tcsoft.searchmachinary.activity;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.View;
+import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.tcsoft.searchmachinary.R;
@@ -18,9 +20,10 @@ import com.tcsoft.searchmachinary.widget.NotificationDialog;
 
 import static com.tcsoft.searchmachinary.config.Constant.weather;
 
-public class MainActivity extends BaseActivity implements View.OnClickListener, MainView {
+public class MainActivity extends BaseActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener, MainView {
 
     private EditText etSearch;
+    private Spinner spType;
     private MainPresenter mainPresenter;
 
 
@@ -39,18 +42,21 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         mainPresenter.getWeatherInfo();
     }
 
+
     private void init() {
         mainPresenter = new MainPresenter(this, this);
         mainPresenter.attachView(this);
-        mainPresenter.getPermissionStorage();
+        mainPresenter.getPermission();
         mainPresenter.initFile();
-        mainPresenter.getNoticeContent();
+        mainPresenter.getFileContent();
         mainPresenter.getToken();
     }
 
 
     private void initView() {
         etSearch = findViewById(R.id.et_search_main);
+        spType = findViewById(R.id.sp_type_main);
+        spType.setOnItemSelectedListener(this);
 
         RelativeLayout rlNewBook = findViewById(R.id.rl_new_book_main);
         rlNewBook.setOnClickListener(this);
@@ -58,9 +64,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         rlHotBook.setOnClickListener(this);
         RelativeLayout rlConsult = findViewById(R.id.rl_consult_main);
         rlConsult.setOnClickListener(this);
-        LinearLayout llSearch = findViewById(R.id.ll_btn_search_main);
+        RelativeLayout llSearch = findViewById(R.id.rl_btn_search_main);
         llSearch.setOnClickListener(this);
         TextView tvNotification = findViewById(R.id.tv_notification_main);
+        ImageView ivVoice = findViewById(R.id.iv_voice_input_main);
+        ivVoice.setOnClickListener(this);
         tvNotification.setText(Constant.noticeContent);
         tvNotification.setSelected(true);
         tvNotification.setOnClickListener(this);
@@ -79,11 +87,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
             case R.id.rl_consult_main:
                 switchActivity(this, AdviseActivity.class, "TITLE", getString(R.string.advise_book_title));
                 break;
+            case R.id.iv_voice_input_main:
+                mainPresenter.showTalkDialog();
+                break;
             case R.id.tv_notification_main:
                 NotificationDialog notificationDialog = new NotificationDialog(this, R.layout.layout_dialog_notification, Constant.noticeContent, Constant.libName, Constant.noticeDate);
                 notificationDialog.show();
                 break;
-            case R.id.ll_btn_search_main:
+            case R.id.rl_btn_search_main:
                 String search = etSearch.getText().toString().trim();
                 if (!search.equals(""))
                     switchActivity(this, SearchActivity.class, "TITLE", getString(R.string.key_search) + search);
@@ -119,5 +130,20 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         ivWeather.setImageResource(weather.getIcon());
     }
 
+
+    @Override
+    public void voiceInput(String title) {
+        etSearch.setText(title);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
 
 }

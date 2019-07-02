@@ -30,6 +30,8 @@ public class BookPresenter extends BasePresenter<BookView> {
             @Override
             public void onSuccess(Book book) {
                 bookView.showBookDetails(book);
+                if (book.gethList().size() > 0)
+                    bookView.showBookHolding();
             }
 
             @Override
@@ -38,5 +40,6 @@ public class BookPresenter extends BasePresenter<BookView> {
             }
         });
     }
+
 
 }

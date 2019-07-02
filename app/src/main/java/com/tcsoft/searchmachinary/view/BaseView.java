@@ -12,7 +12,6 @@ public interface BaseView {
 
     void showToast(String msg);
 
-    Context getContext();
 
     void showWeather();
 }

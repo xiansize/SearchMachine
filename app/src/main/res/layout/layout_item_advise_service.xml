@@ -11,7 +11,7 @@
         <RelativeLayout
             android:id="@+id/rl_icon_service"
             style="@style/ContainerIconAdvise"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="6dp"
             android:background="@drawable/shape_icon_service">
 
             <ImageView

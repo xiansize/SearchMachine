@@ -11,7 +11,6 @@ import com.tcsoft.searchmachinary.utils.TimeUtil;
 import com.tcsoft.searchmachinary.view.AdviseView;
 
 
-
 public class AdvisePresenter extends BasePresenter<AdviseView> {
 
 

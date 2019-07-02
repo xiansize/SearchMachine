@@ -48,8 +48,5 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
         ToastUtil.showToast(this,msg);
     }
 
-    @Override
-    public Context getContext() {
-        return BaseActivity.this;
-    }
+
 }

@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    >
+    android:baselineAligned="false"
+    android:id="@+id/ll_book_holding_item">
 
     <RelativeLayout
         style="@style/RlItemHoldingContainer"
@@ -13,6 +14,7 @@
         <TextView
             android:id="@+id/tv_barcode_item_book_holding"
             style="@style/TvBookInfoBookDetailsItem"
+            android:text="@string/book_barcode"
             android:layout_centerInParent="true"/>
     </RelativeLayout>
 
@@ -25,6 +27,7 @@
             android:id="@+id/tv_location_item_book_holding"
             style="@style/TvBookInfoBookDetailsItem"
             android:maxLines="3"
+            android:text="@string/book_location"
             android:layout_centerInParent="true"/>
     </RelativeLayout>
 
@@ -36,6 +39,7 @@
         <TextView
             android:id="@+id/tv_status_item_book_holding"
             style="@style/TvBookInfoBookDetailsItem"
+            android:text="@string/book_status"
             android:layout_centerInParent="true"/>
     </RelativeLayout>
 

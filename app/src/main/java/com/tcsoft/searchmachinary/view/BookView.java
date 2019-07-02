@@ -7,5 +7,8 @@ public interface BookView extends BaseView{
 
     void showBookDetails(Book book);
 
+    void showBookHolding();
+
+
 
 }

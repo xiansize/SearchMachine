@@ -70,15 +70,15 @@
         <item name="android:orientation">horizontal</item>
         <item name="android:layout_marginLeft">10dp</item>
         <item name="android:layout_marginRight">10dp</item>
-        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:layout_marginTop">16dp</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:background">@drawable/shape_corner_white</item>
     </style>
     <style name="EtInputText">
         <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">16dp</item>
+        <item name="android:layout_height">match_parent</item>
         <item name="android:layout_marginLeft">10dp</item>
-        <item name="android:layout_weight">0.8</item>
+        <item name="android:layout_weight">0.7</item>
         <item name="android:background">@null</item>
         <item name="android:inputType">text</item>
         <item name="android:maxLength">10</item>
@@ -92,7 +92,7 @@
         <item name="android:orientation">horizontal</item>
         <item name="android:layout_marginLeft">10dp</item>
         <item name="android:layout_marginRight">10dp</item>
-        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:layout_marginTop">16dp</item>
         <item name="android:gravity">center_vertical</item>
     </style>
     <style name="LlCallno">
@@ -100,7 +100,7 @@
         <item name="android:layout_height">150dp</item>
         <item name="android:baselineAligned">false</item>
         <item name="android:orientation">horizontal</item>
-        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:layout_marginTop">20dp</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:background">@drawable/bg_callno</item>
     </style>
@@ -166,7 +166,7 @@
         <item name="android:layout_width">44dp</item>
         <item name="android:layout_height">44dp</item>
         <item name="android:background">@drawable/shape_circle_white</item>
-        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:layout_marginTop">16dp</item>
         <item name="android:layout_marginRight">10dp</item>
     </style>
     <style name="IvConsult">

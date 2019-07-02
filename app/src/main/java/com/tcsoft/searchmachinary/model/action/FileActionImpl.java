@@ -1,5 +1,7 @@
 package com.tcsoft.searchmachinary.model.action;
 
+import android.util.Log;
+
 import com.tcsoft.searchmachinary.model.listener.ActionListener;
 import com.tcsoft.searchmachinary.utils.FileUtil;
 
@@ -19,7 +21,7 @@ public class FileActionImpl implements FileAction {
         if (list != null && list.size() > 0)
             listener.onSuccess(list);
         else
-            listener.onFailure(TAG, "文件出错！");
+            Log.d(TAG,"文件没配置");
     }
 
 }

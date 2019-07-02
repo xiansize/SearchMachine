@@ -6,7 +6,14 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
+
+import com.iflytek.cloud.SpeechConstant;
+import com.iflytek.cloud.SpeechError;
+import com.iflytek.cloud.SpeechUtility;
+import com.iflytek.cloud.ui.RecognizerDialog;
+import com.iflytek.cloud.ui.RecognizerDialogListener;
 import com.tcsoft.searchmachinary.activity.MainActivity;
 import com.tcsoft.searchmachinary.bean.Weather;
 import com.tcsoft.searchmachinary.config.Constant;
@@ -18,7 +25,13 @@ import com.tcsoft.searchmachinary.model.action.WeatherAction;
 import com.tcsoft.searchmachinary.model.action.WeatherActionImpl;
 import com.tcsoft.searchmachinary.model.listener.ActionListener;
 import com.tcsoft.searchmachinary.utils.FileUtil;
+import com.tcsoft.searchmachinary.utils.VoiceUtil;
 import com.tcsoft.searchmachinary.view.MainView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.List;
 
 
@@ -31,8 +44,7 @@ public class MainPresenter extends BasePresenter<MainView> {
     private FileAction fileAction;
     private WeatherAction weatherAction;
     private TokenAction tokenAction;
-
-
+    private VoiceUtil voiceUtil;
 
     public MainPresenter(MainView mainView, Context context) {
         this.mainView = mainView;
@@ -40,6 +52,7 @@ public class MainPresenter extends BasePresenter<MainView> {
         this.fileAction = new FileActionImpl();
         this.weatherAction = new WeatherActionImpl();
         this.tokenAction = new TokenActionImpl();
+        this.voiceUtil = new VoiceUtil(context);
     }
 
 
@@ -48,7 +61,7 @@ public class MainPresenter extends BasePresenter<MainView> {
     }
 
 
-    public void getNoticeContent() {
+    public void getFileContent() {
         fileAction.getFileContent(new ActionListener<List<String>>() {
             @Override
             public void onSuccess(List<String> list) {
@@ -61,12 +74,10 @@ public class MainPresenter extends BasePresenter<MainView> {
 
             @Override
             public void onFailure(String tag, String msg) {
-                mainView.showToast(msg);
+
             }
         });
     }
-
-
 
 
     public void getWeatherInfo() {
@@ -87,26 +98,31 @@ public class MainPresenter extends BasePresenter<MainView> {
     }
 
 
-    public void getToken(){
+    public void getToken() {
         tokenAction.getToken();
     }
 
 
-
-
-
-
-    //动态获取权限
-    public void getPermissionStorage() {
+    public void getPermission() {
         String[] PERMISSION_STORAGE = new String[0];
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN) {
-            PERMISSION_STORAGE = new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+            PERMISSION_STORAGE = new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO};
         }
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
-            if (ActivityCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED || PackageManager.PERMISSION_GRANTED != ContextCompat.checkSelfPermission(context, android.Manifest.permission.RECORD_AUDIO)) {
                 ActivityCompat.requestPermissions((MainActivity) context, PERMISSION_STORAGE, 0x001);
             }
         }
+    }
+
+
+    public void showTalkDialog() {
+        voiceUtil.showTalkDialog(new VoiceUtil.InputVoiceListener() {
+            @Override
+            public void inputVoiceListener(String title) {
+                mainView.voiceInput(title);
+            }
+        });
     }
 
 

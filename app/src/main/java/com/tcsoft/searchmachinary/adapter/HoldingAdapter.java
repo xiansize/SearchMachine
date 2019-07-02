@@ -7,9 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import com.tcsoft.searchmachinary.R;
-import com.tcsoft.searchmachinary.bean.Book;
 import com.tcsoft.searchmachinary.bean.Holding;
 
 import java.util.List;

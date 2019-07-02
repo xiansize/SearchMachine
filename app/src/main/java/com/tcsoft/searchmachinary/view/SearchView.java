@@ -11,4 +11,12 @@ import java.util.List;
 public interface SearchView extends BaseView {
 
     void showList(List<Book> list);
+
+    void showNoResult(String key);
+
+    void showEnd();
+
+    void showHotBook(List<Book> list);
+
+    void showNewBook(List<Book> list);
 }

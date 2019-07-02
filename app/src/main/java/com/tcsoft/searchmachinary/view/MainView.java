@@ -8,6 +8,6 @@ import com.tcsoft.searchmachinary.bean.Weather;
 
 public interface MainView extends BaseView {
 
-
+    void voiceInput(String title);
 
 }

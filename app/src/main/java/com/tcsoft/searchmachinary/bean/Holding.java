@@ -31,9 +31,9 @@ public class Holding {
 
     public void setStatus(int status) {
         if (status == 2)
-            this.status = "可借";
+            this.status = "在馆";
         else
-            this.status = "不可借";
+            this.status = "不在馆";
     }
 
     public String getBarcode() {

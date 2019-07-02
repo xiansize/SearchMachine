@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -26,6 +25,7 @@ public class BookActivity extends BaseActivity implements View.OnClickListener, 
     private TextView tvCanLoan, tvShelfNum, tvReadingNum;
     private ImageView ivCover;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,8 +38,6 @@ public class BookActivity extends BaseActivity implements View.OnClickListener, 
     private void initView() {
         LinearLayout llBackpress = findViewById(R.id.ll_back_press_base);
         llBackpress.setOnClickListener(this);
-        CheckBox cbLoan = findViewById(R.id.cb_can_loan);
-        cbLoan.setVisibility(View.INVISIBLE);
         TextView tvTitle = findViewById(R.id.tv_key_base);
         tvTitle.setText(R.string.book_details);
 
@@ -78,6 +76,7 @@ public class BookActivity extends BaseActivity implements View.OnClickListener, 
         }
     }
 
+
     @Override
     public void showWeather() {
         TextView tvTemperature, tvWeather, tvCityName;
@@ -103,16 +102,22 @@ public class BookActivity extends BaseActivity implements View.OnClickListener, 
         tvShape.setText(String.format(getResources().getString(R.string.book_shape), book.getPage(), book.getSize()));
         tvSummary.setText(String.format(getResources().getString(R.string.book_summary), book.getSummary()));
 
-        tvCanLoan.setText(String.format(getResources().getString(R.string.book_canloan), book.getCanLoanNum()-1));
+        tvCanLoan.setText(String.format(getResources().getString(R.string.book_canloan), book.getCanLoanNum() - 1));
         tvShelfNum.setText(String.format(getResources().getString(R.string.book_shelf_num), book.getShelfNum()));
         tvReadingNum.setText(String.format(getResources().getString(R.string.book_reading_num), book.getLoanNum()));
 
 
-
         RecyclerView rvHolding = findViewById(R.id.rv_holding_book_details);
-        rvHolding.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
-        HoldingAdapter holdingAdapter = new HoldingAdapter(book.gethList(),this);
+        rvHolding.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        HoldingAdapter holdingAdapter = new HoldingAdapter(book.gethList(), this);
         rvHolding.setAdapter(holdingAdapter);
+    }
+
+
+    @Override
+    public void showBookHolding() {
+        LinearLayout llBookHolding = findViewById(R.id.ll_book_holding_item);
+        llBookHolding.setVisibility(View.VISIBLE);
     }
 
 

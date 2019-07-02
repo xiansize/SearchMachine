@@ -1,11 +1,10 @@
 package com.tcsoft.searchmachinary.config;
 
-/**
- * Created by Admin on 2019/6/19.
- */
 
 public class Config {
 
+    //opac
+    public static final String PATH_OPAC = "http://10.10.6.98:28098/opac";
 
     //openlib地址:本地
     public static final String PATH_OPEN_LIB = "http://10.10.6.98:28098/openlib";

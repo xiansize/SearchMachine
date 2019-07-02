@@ -27,6 +27,7 @@
 
     <CheckBox
         android:id="@+id/cb_can_loan"
+        android:visibility="invisible"
         style="@style/CbCanloan"/>
 
 

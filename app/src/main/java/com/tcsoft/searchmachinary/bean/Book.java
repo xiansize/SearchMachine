@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Book implements Serializable{
 
-
+    private int total;
     private String title;
     private String author;
     private String publisher;
@@ -107,6 +107,14 @@ public class Book implements Serializable{
 
     public String getPublisher() {
         return publisher;
+    }
+
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
     }
 
     public void setPublisher(String publisher) {

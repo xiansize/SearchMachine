@@ -5,11 +5,13 @@ import android.util.Log;
 import com.tcsoft.searchmachinary.bean.Book;
 import com.tcsoft.searchmachinary.bean.Consult;
 import com.tcsoft.searchmachinary.bean.Holding;
+import com.tcsoft.searchmachinary.bean.Search;
 import com.tcsoft.searchmachinary.model.api.BookApi;
 import com.tcsoft.searchmachinary.model.api.BookApiImpl;
 import com.tcsoft.searchmachinary.model.asyn.AsyncTaskAction;
 import com.tcsoft.searchmachinary.model.asyn.AsyncTaskListener;
 import com.tcsoft.searchmachinary.model.listener.ActionListener;
+import com.tcsoft.searchmachinary.utils.TimeUtil;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,28 +32,127 @@ public class BookActionImpl implements BookAction {
         bookApi = new BookApiImpl();
     }
 
-    @Override
-    public void newBook(ActionListener<List<Book>> listener) {
-
-    }
 
     @Override
-    public void hotBook(ActionListener<List<Book>> listener) {
-
-    }
-
-    @Override
-    public void searchBook(final String title, final String page, boolean onlyCanLoan, final ActionListener<List<Book>> listener) {
+    public void newBook(final String page, final ActionListener<Search> listener) {
         AsyncTaskAction asyncTaskAction = new AsyncTaskAction(new AsyncTaskListener<String>() {
             @Override
             public String background() {
-                return bookApi.searchBook(title, page);
+                return bookApi.newBook(String.valueOf(page));
             }
 
             @Override
             public void result(String result) {
                 if (result != null) {
                     Log.d(TAG, result);
+                    Search search = new Search();
+                    List<Book> list = new ArrayList<>();
+                    try {
+                        JSONObject jsonObject = new JSONObject(result);
+                        JSONArray jsonArray = jsonObject.getJSONArray("bookList");
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            Book book = new Book();
+                            book.setTitle(jsonArray.getJSONObject(i).getString("title"));
+                            book.setAuthor(jsonArray.getJSONObject(i).getString("author"));
+                            try {
+                                book.setCallNo(jsonArray.getJSONObject(i).getString("callno"));
+                            } catch (JSONException e) {
+                                book.setCallNo("");
+                            }
+
+                            book.setPublisher(jsonArray.getJSONObject(i).getString("publisher"));
+                            book.setPubDate(jsonArray.getJSONObject(i).getString("pubdate"));
+                            book.setRecNo(jsonArray.getJSONObject(i).getString("bookrecno"));
+                            book.setIsbn(jsonArray.getJSONObject(i).getString("isbn"));
+                            list.add(book);
+                        }
+
+                        search.setTotal(jsonObject.getInt("totalCount"));
+                        search.setbList(list);
+                        listener.onSuccess(search);
+
+                    } catch (JSONException e) {
+                        listener.onFailure(TAG, "连接异常");
+                    }
+
+                } else {
+                    listener.onFailure(TAG, "连接失败");
+
+                }
+            }
+        });
+        asyncTaskAction.execute();
+
+    }
+
+
+    @Override
+    public void hotBook(final ActionListener<Search> listener) {
+        AsyncTaskAction asyncTaskAction = new AsyncTaskAction(new AsyncTaskListener<String>() {
+            @Override
+            public String background() {
+                return bookApi.hotBook();
+            }
+
+            @Override
+            public void result(String result) {
+                if (result != null) {
+                    Log.d(TAG, result);
+                    Search search = new Search();
+                    List<Book> list = new ArrayList<>();
+                    try {
+                        JSONArray jsonArray = new JSONArray(result);
+                        Log.d(TAG, jsonArray.length() + "");
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            Book book = new Book();
+                            book.setTitle(jsonArray.getJSONObject(i).getJSONObject("biblios").getString("title"));
+                            book.setAuthor(jsonArray.getJSONObject(i).getJSONObject("biblios").getString("author"));
+                            try {
+                                book.setCallNo(jsonArray.getJSONObject(i).getJSONObject("biblios").getString("callno"));
+                            } catch (JSONException e) {
+                                book.setCallNo("");
+                            }
+
+                            book.setPublisher(jsonArray.getJSONObject(i).getJSONObject("biblios").getString("publisher"));
+                            book.setPubDate(jsonArray.getJSONObject(i).getJSONObject("biblios").getString("pubdate"));
+                            book.setRecNo(jsonArray.getJSONObject(i).getJSONObject("biblios").getString("bookrecno"));
+                            book.setIsbn(jsonArray.getJSONObject(i).getJSONObject("biblios").getString("isbn"));
+                            book.setLoanNum(jsonArray.getJSONObject(i).getInt("totalNum"));
+                            list.add(book);
+                        }
+
+                        search.setTotal(99);
+                        search.setbList(list);
+                        listener.onSuccess(search);
+
+                    } catch (JSONException e) {
+                        listener.onFailure(TAG, "连接异常");
+                    }
+
+                } else {
+                    listener.onFailure(TAG, "连接失败");
+
+                }
+            }
+        });
+        asyncTaskAction.execute();
+
+    }
+
+
+    @Override
+    public void searchBook(final String type, final String title, final String page, boolean onlyCanLoan, final ActionListener<Search> listener) {
+        AsyncTaskAction asyncTaskAction = new AsyncTaskAction(new AsyncTaskListener<String>() {
+            @Override
+            public String background() {
+                return bookApi.searchBook(type,title, page);
+            }
+
+            @Override
+            public void result(String result) {
+                if (result != null) {
+                    Log.d(TAG, result);
+                    Search search = new Search();
                     List<Book> list = new ArrayList<>();
                     try {
                         JSONObject jsonObject = new JSONObject(result);
@@ -60,6 +161,8 @@ public class BookActionImpl implements BookAction {
                             Book book = new Book();
                             book.setTitle(jsonArray.getJSONObject(i).getString("title"));
                             book.setAuthor(jsonArray.getJSONObject(i).getString("author"));
+                            book.setCallNo(jsonArray.getJSONObject(i).getString("callno"));
+
                             book.setPublisher(jsonArray.getJSONObject(i).getString("publisher"));
                             book.setPubDate(jsonArray.getJSONObject(i).getString("pubdate"));
                             book.setRecNo(jsonArray.getJSONObject(i).getString("bookrecno"));
@@ -67,7 +170,9 @@ public class BookActionImpl implements BookAction {
                             list.add(book);
                         }
 
-                        listener.onSuccess(list);
+                        search.setTotal(jsonObject.getInt("total"));
+                        search.setbList(list);
+                        listener.onSuccess(search);
 
 
                     } catch (JSONException e) {
@@ -113,17 +218,17 @@ public class BookActionImpl implements BookAction {
                             try {
                                 holding.setBarcode(jsonArray.getJSONObject(x).getString("barcode"));
                             } catch (JSONException e) {
-                                holding.setBarcode("未知");
+                                holding.setBarcode("");
                             }
                             try {
                                 holding.setLocal(jsonArray.getJSONObject(x).getString("curlocalname"));
                             } catch (JSONException e) {
-                                holding.setLocal("未知");
+                                holding.setLocal("");
                             }
                             try {
                                 holding.setShelf(jsonArray.getJSONObject(x).getString("shelfno"));
                             } catch (JSONException e) {
-                                holding.setShelf("未知");
+                                holding.setShelf("");
                             }
                             try {
                                 int status = jsonArray.getJSONObject(x).getInt("state");
@@ -167,7 +272,7 @@ public class BookActionImpl implements BookAction {
                         try {
                             book.setSummary(jsonObject.getString("summary"));
                         } catch (JSONException e) {
-                            book.setSummary("未知");
+                            book.setSummary("暂无");
                         }
 
 
@@ -234,9 +339,21 @@ public class BookActionImpl implements BookAction {
 
             @Override
             public void result(String result) {
+                Log.d(TAG, result);
                 if (result != null) {
                     try {
                         JSONObject jsonObject = new JSONObject(result);
+                        Consult consult = new Consult();
+                        consult.setClient(false);
+                        consult.setTime(TimeUtil.getAllTime());
+                        String resp = "";
+                        try {
+                            resp = jsonObject.getJSONArray("list").getJSONObject(0).getString("infoContent");
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        consult.setText(resp + jsonObject.getString("robotResponse"));
+                        listener.onSuccess(consult);
 
 
                     } catch (JSONException e) {

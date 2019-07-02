@@ -43,8 +43,7 @@ public class AdviseActivity extends BaseActivity implements View.OnClickListener
     private void initView() {
         TextView tvTitle = findViewById(R.id.tv_key_base);
         tvTitle.setText(getIntent().getStringExtra("TITLE"));
-        CheckBox cbCanloan = findViewById(R.id.cb_can_loan);
-        cbCanloan.setVisibility(View.INVISIBLE);
+
 
         LinearLayout llBackpress = findViewById(R.id.ll_back_press_base);
         llBackpress.setOnClickListener(this);
