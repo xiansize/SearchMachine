@@ -22,8 +22,7 @@ public class SearchPresenter extends BasePresenter<SearchView> {
     private BookAction bookAction;
     private Context context;
     private String searchTitle;
-
-    private String[] tList = {"title", "author", "isbn"};
+    private String searchType;
     private int lTotal;
     private int pTotal;
     private int mPage = 1;
@@ -36,8 +35,13 @@ public class SearchPresenter extends BasePresenter<SearchView> {
     }
 
 
+    public void setSearchType(String searchType) {
+        this.searchType = searchType;
+    }
+
     public void setSearchTitle(String searchTitle) {
         this.searchTitle = searchTitle;
+
     }
 
 
@@ -49,7 +53,7 @@ public class SearchPresenter extends BasePresenter<SearchView> {
     public void getList(boolean canLoan) {
         if (searchTitle.contains(context.getResources().getString(R.string.key_search))) {
             String sTitle = searchTitle.split(context.getResources().getString(R.string.key_search))[1];
-            getSearchList(tList[0], sTitle, mPage, canLoan);
+            getSearchList(searchType, sTitle, mPage, canLoan);
         } else if (searchTitle.equals(context.getResources().getString(R.string.new_book_title)))
             getNewBookList(mPage);
         else if (searchTitle.equals(context.getResources().getString(R.string.hot_book_title)))

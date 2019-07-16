@@ -1,7 +1,6 @@
 package com.tcsoft.searchmachinary.adapter;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -26,17 +25,15 @@ public class SearchBookAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     private Context context;
     private ItemOnClickListener itemOnClickListener;
 
-
     private boolean isRanking;
-
 
     //view
     private static final int TYPE_BOOK = 1;
     private static final int TYPE_FOOTER = 0;
 
-    private int status_loading = 1;
+    private int statusLoading = 1;
 
-    //loadin
+    //loading
     private static final int END = 0;
     private static final int LOADING = 1;
 
@@ -52,8 +49,8 @@ public class SearchBookAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     }
 
 
-    public void setStatus_loading(int status_loading) {
-        this.status_loading = status_loading;
+    public void setStatusLoading(int statusLoading) {
+        this.statusLoading = statusLoading;
         notifyDataSetChanged();
     }
 
@@ -87,6 +84,8 @@ public class SearchBookAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         }
     }
 
+
+
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -99,6 +98,7 @@ public class SearchBookAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             return new FooterViewHolder(view);
         }
     }
+
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
@@ -132,7 +132,7 @@ public class SearchBookAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             Picasso.with(context).load(list.get(position).getCover()).placeholder(R.drawable.icon_nocover).error(R.drawable.icon_nocover).into(searchViewHolder.ivCover);
             holder.itemView.setTag(position);
         } else {
-            switch (status_loading) {
+            switch (statusLoading) {
                 case LOADING:
                     ((FooterViewHolder) holder).tvFooter.setText(context.getResources().getString(R.string.search_loading));
                     break;

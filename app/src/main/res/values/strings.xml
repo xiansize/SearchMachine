@@ -10,7 +10,7 @@
     <string name="date_base">2012年12月12日</string>
     <string name="name_base">图书查询终端</string>
     <string name="temperature">20°</string>
-    <string name="weather">雨转晴</string>
+    <string name="weather">天气</string>
     <string name="location">IN 广州</string>
     <string name="guider">guider</string>
     <string name="cover">cover</string>
@@ -35,8 +35,8 @@
 
     <string name="shelf_face_a">23A</string>
     <string name="shelf_face_b">23B</string>
-    <string name="shelf_callno_a">D925.3 ~ D920.0</string>
-    <string name="shelf_callno_b">D920.1 ~ D920.5</string>
+    <string name="shelf_callno_a">%s ~ %s</string>
+    <string name="shelf_callno_b">%s ~ %s</string>
     <string name="shelf_callno_a_class">法学理论方针、政策及其阐述</string>
     <string name="shelf_callno_b_class">经济学解释、案例</string>
 
@@ -55,6 +55,7 @@
     <string name="search_no_result">无“%s”相关图书</string>
     <string name="search_loading">加载中…</string>
     <string name="search_end">没有更多了。</string>
+    <string name="search_type">[%s]</string>
 
 
     <!--hotbook-->
@@ -87,5 +88,25 @@
     <string name="book_barcode">条码号</string>
     <string name="book_location">馆藏位置</string>
     <string name="book_status">书状态</string>
+
+    <!--config-->
+    <string name="config">配置:</string>
+    <string name="confirm">确认修改</string>
+
+    <string name="libcode">馆代码:</string>
+
+    <string name="citycode">城市天气代号:</string>
+
+    <string name="libname">图书馆名称:</string>
+    <string name="noticeDate">公告时间:</string>
+    <string name="noticeContent">公告内容:</string>
+    <string name="shelfInfo">书架信息</string>
+
+    <string name="shelfno_a">A面:</string>
+    <string name="callno_a">A面索书范围:</string>
+    <string name="shelfno_desp_a">A面书描述:</string>
+    <string name="shelfno_b">B面:</string>
+    <string name="callno_b">B面索书范围:</string>
+    <string name="shelfno_desp_b">B面书描述:</string>
 
 </resources>

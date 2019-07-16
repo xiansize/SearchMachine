@@ -1,11 +1,9 @@
 package com.tcsoft.searchmachinary.activity;
 
-
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -18,12 +16,12 @@ import com.tcsoft.searchmachinary.presenter.MainPresenter;
 import com.tcsoft.searchmachinary.view.MainView;
 import com.tcsoft.searchmachinary.widget.NotificationDialog;
 
+
 import static com.tcsoft.searchmachinary.config.Constant.weather;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener, MainView {
 
     private EditText etSearch;
-    private Spinner spType;
     private MainPresenter mainPresenter;
 
 
@@ -46,17 +44,36 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     private void init() {
         mainPresenter = new MainPresenter(this, this);
         mainPresenter.attachView(this);
-        mainPresenter.getPermission();
-        mainPresenter.initFile();
         mainPresenter.getFileContent();
-        mainPresenter.getToken();
     }
 
 
     private void initView() {
         etSearch = findViewById(R.id.et_search_main);
-        spType = findViewById(R.id.sp_type_main);
+
+        TextView tvTitleBar = findViewById(R.id.tv_titlebar_device_name);
+        tvTitleBar.setOnClickListener(this);
+
+        Spinner spType = findViewById(R.id.sp_type_main);
+        ArrayAdapter<String> selectedAdapter = new ArrayAdapter<String>(this, R.layout.layout_spinner_selected, getResources().getStringArray(R.array.type));
+        selectedAdapter.setDropDownViewResource(R.layout.layout_spinner_drop);
+        spType.setAdapter(selectedAdapter);
         spType.setOnItemSelectedListener(this);
+
+        TextView tvShelfNoA = findViewById(R.id.tv_shelfno_a_main);
+        tvShelfNoA.setText(Constant.shelfNoA);
+        TextView tvCallNoA = findViewById(R.id.tv_callno_a_main);
+        tvCallNoA.setText(Constant.callNoA);
+        TextView tvDespA = findViewById(R.id.tv_shelfno_a_desp_main);
+        tvDespA.setText(Constant.shelfADesp);
+
+        TextView tvShelfNoB = findViewById(R.id.tv_shelfno_b_main);
+        tvShelfNoB.setText(Constant.shelfNoB);
+        TextView tvCallNoB = findViewById(R.id.tv_callno_b_main);
+        tvCallNoB.setText(Constant.callNoB);
+        TextView tvDespB = findViewById(R.id.tv_shelfno_b_desp_main);
+        tvDespB.setText(Constant.shelfBDesp);
+
 
         RelativeLayout rlNewBook = findViewById(R.id.rl_new_book_main);
         rlNewBook.setOnClickListener(this);
@@ -78,6 +95,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.tv_titlebar_device_name:
+                switchActivity(this, ConfigActivity.class);
+                break;
             case R.id.rl_new_book_main:
                 switchActivity(this, SearchActivity.class, "TITLE", getString(R.string.new_book_title));
                 break;
@@ -97,15 +117,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
             case R.id.rl_btn_search_main:
                 String search = etSearch.getText().toString().trim();
                 if (!search.equals(""))
-                    switchActivity(this, SearchActivity.class, "TITLE", getString(R.string.key_search) + search);
+                    switchActivity(this, SearchActivity.class, "TITLE", getString(R.string.key_search) + search, "POSITION", mainPresenter.getSearchTypeIndex());
                 break;
         }
-    }
-
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
 
@@ -138,12 +152,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+        mainPresenter.setSearchTypeIndex(position);
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-
+        mainPresenter.setSearchTypeIndex(0);
     }
+
 
 }

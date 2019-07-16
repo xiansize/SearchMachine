@@ -12,6 +12,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.tcsoft.searchmachinary.R;
+import com.tcsoft.searchmachinary.adapter.LoadWrapper;
+import com.tcsoft.searchmachinary.adapter.SearchAdapter;
 import com.tcsoft.searchmachinary.adapter.SearchBookAdapter;
 import com.tcsoft.searchmachinary.bean.Book;
 import com.tcsoft.searchmachinary.presenter.SearchPresenter;
@@ -23,13 +25,14 @@ import java.util.List;
 
 import static com.tcsoft.searchmachinary.config.Constant.weather;
 
-public class SearchActivity extends BaseActivity implements View.OnClickListener, SearchView, SearchBookAdapter.ItemOnClickListener {
+public class SearchActivity extends BaseActivity implements View.OnClickListener, SearchView, SearchAdapter.OnClickListener {
 
 
     private SearchPresenter searchPresenter;
-    private SearchBookAdapter searchBookAdapter;
     private List<Book> searchList;
     private CheckBox cbLoan;
+
+    private LoadWrapper loadWrapper;
 
 
     @Override
@@ -50,15 +53,17 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
 
         RecyclerView rvSearch = findViewById(R.id.rv_search);
         searchList = new ArrayList<>();
-        searchBookAdapter = new SearchBookAdapter(searchList, this);
-        searchBookAdapter.setItemOnClickListener(this);
+        SearchAdapter searchAdapter = new SearchAdapter(searchList, this);
+        searchAdapter.setOnClickListener(this);
         if (getIntent().getStringExtra("TITLE").equals(getResources().getString(R.string.hot_book_title))) {
-            searchBookAdapter.setRanking(true);
+            searchAdapter.setRanking(true);
             rvSearch.setLayoutManager(new GridLayoutManager(this, 1, LinearLayoutManager.VERTICAL, false));
         } else
             rvSearch.setLayoutManager(new GridLayoutManager(this, 2, LinearLayoutManager.VERTICAL, false));
-        rvSearch.setAdapter(searchBookAdapter);
         rvSearch.addOnScrollListener(new LoadingListener());
+        loadWrapper = new LoadWrapper(searchAdapter, this);
+        rvSearch.setAdapter(loadWrapper);
+
     }
 
 
@@ -66,9 +71,9 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
         searchPresenter = new SearchPresenter(this, this);
         searchPresenter.attachView(this);
         searchPresenter.setSearchTitle(getIntent().getStringExtra("TITLE"));
+        searchPresenter.setSearchType(getResources().getStringArray(R.array.type_search)[getIntent().getIntExtra("POSITION", 0)]);
         searchPresenter.showWeather();
         searchPresenter.getList(cbLoan.isChecked());
-
     }
 
 
@@ -101,26 +106,25 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
     @Override
     public void showList(List<Book> list) {
         searchList.addAll(list);
-        searchBookAdapter.notifyDataSetChanged();
+        loadWrapper.notifyDataSetChanged();
     }
 
 
     @Override
     public void showEnd() {
-        searchBookAdapter.setStatus_loading(0);
-
+        loadWrapper.setStatusLoading(0);
     }
 
     @Override
     public void showHotBook(List<Book> list) {
         searchList.addAll(list);
-        searchBookAdapter.setStatus_loading(0);
+        loadWrapper.setStatusLoading(0);
     }
 
     @Override
     public void showNewBook(List<Book> list) {
         searchList.addAll(list);
-        searchBookAdapter.notifyDataSetChanged();
+        loadWrapper.notifyDataSetChanged();
     }
 
 

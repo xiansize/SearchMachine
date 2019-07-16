@@ -4,24 +4,27 @@ import android.os.Environment;
 import android.util.Log;
 
 import com.tcsoft.searchmachinary.config.Config;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.RandomAccessFile;
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class FileUtil {
+
     private static final String TAG = "FileUtil";
 
 
     public static void initFile() {
         File dir = new File(Environment.getExternalStorageDirectory() + Config.DIRS_CONFIG);
         if (!dir.exists()) {
-             dir.mkdirs();
+            dir.mkdirs();
         }
 
         File file = new File(Environment.getExternalStorageDirectory() + Config.DIRS_CONFIG + Config.FILE_CONFIG);
@@ -68,8 +71,34 @@ public class FileUtil {
                 Log.d(TAG, e.getMessage());
             }
         }
-
         return list;
+    }
+
+
+    public void addBarcodeToFile(String barcode, String dPath, String fPath) {
+        RandomAccessFile randomAccessFile = null;
+        try {
+
+            File file = new File(Environment.getExternalStorageDirectory() + Config.DIRS_CONFIG + Config.FILE_CONFIG);
+            if (!file.exists()) return;
+
+            randomAccessFile = new RandomAccessFile(file, "rwd");
+            randomAccessFile.seek(file.length());
+            randomAccessFile.write((barcode + "\r\n").getBytes());
+            randomAccessFile.close();
+
+
+        } catch (Exception e) {
+            Log.d(TAG, e.getMessage());
+        } finally {
+            try {
+                if (randomAccessFile != null) {
+                    randomAccessFile.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 

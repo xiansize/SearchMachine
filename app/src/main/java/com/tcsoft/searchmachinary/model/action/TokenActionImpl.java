@@ -8,6 +8,7 @@ import com.tcsoft.searchmachinary.model.api.TokenApi;
 import com.tcsoft.searchmachinary.model.api.TokenApiImpl;
 import com.tcsoft.searchmachinary.model.asyn.AsyncTaskAction;
 import com.tcsoft.searchmachinary.model.asyn.AsyncTaskListener;
+import com.tcsoft.searchmachinary.model.listener.ActionListener;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -25,7 +26,7 @@ public class TokenActionImpl implements TokenAction {
     }
 
     @Override
-    public void getToken() {
+    public void getToken(final ActionListener<String> listener) {
         AsyncTaskAction asyncTaskAction = new AsyncTaskAction(new AsyncTaskListener<String>() {
             @Override
             public String background() {
@@ -39,12 +40,14 @@ public class TokenActionImpl implements TokenAction {
                     try {
                         JSONObject jsonObject = new JSONObject(result);
                         Constant.token = jsonObject.getJSONArray("messagelist").getJSONObject(0).getString("token");
+                        listener.onSuccess("获取token成功");
 
                     } catch (JSONException e) {
-                        Log.d(TAG, "获取token异常");
+                        listener.onFailure(TAG, "获取token异常");
+
                     }
                 } else {
-                    Log.d(TAG, "获取token失败");
+                    listener.onFailure(TAG, "获取token异常");
                 }
             }
         });

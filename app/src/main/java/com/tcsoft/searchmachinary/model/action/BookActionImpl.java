@@ -145,7 +145,7 @@ public class BookActionImpl implements BookAction {
         AsyncTaskAction asyncTaskAction = new AsyncTaskAction(new AsyncTaskListener<String>() {
             @Override
             public String background() {
-                return bookApi.searchBook(type,title, page);
+                return bookApi.searchBook(type, title, page);
             }
 
             @Override

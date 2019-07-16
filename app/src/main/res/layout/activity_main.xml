@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -114,22 +115,23 @@
             android:id="@+id/sp_type_main"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.22"
-            android:spinnerMode="dropdown"
+            android:layout_weight="1.6"
             android:entries="@array/type"
-            />
+            android:spinnerMode="dropdown"
+            android:textAlignment="center" />
 
 
         <com.tcsoft.searchmachinary.widget.CusEditView
             android:id="@+id/et_search_main"
             style="@style/EtInputText"
+            android:layout_weight="5.4"
             android:hint="@string/search_hint" />
 
         <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.12"
-            android:padding="10dp">
+            android:layout_weight="1"
+            android:padding="8dp">
 
             <ImageView
                 android:id="@+id/iv_voice_input_main"
@@ -146,8 +148,8 @@
             android:id="@+id/rl_btn_search_main"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_margin="8dp"
-            android:layout_weight="0.16"
+            android:layout_margin="6dp"
+            android:layout_weight="1.4"
             android:background="@drawable/shape_search_border">
 
             <TextView
@@ -157,7 +159,7 @@
                 android:layout_centerInParent="true"
                 android:text="@string/btn_search"
                 android:textColor="#2FB28B"
-                android:textSize="16sp" />
+                android:textSize="18sp" />
 
         </RelativeLayout>
 
@@ -231,6 +233,7 @@
                 <RelativeLayout style="@style/RlCallnoShelf">
 
                     <TextView
+                        android:id="@+id/tv_shelfno_a_main"
                         style="@style/TvCallnoShelf"
                         android:text="@string/shelf_face_a" />
 
@@ -241,10 +244,12 @@
                     android:contentDescription="@string/guider" />
 
                 <TextView
+                    android:id="@+id/tv_callno_a_main"
                     style="@style/TvCallnoShelfNumber"
                     android:text="@string/shelf_callno_a" />
 
                 <TextView
+                    android:id="@+id/tv_shelfno_a_desp_main"
                     style="@style/TvCallnoShelfContent"
                     android:text="@string/shelf_callno_a_class" />
 
@@ -257,6 +262,7 @@
                 <RelativeLayout style="@style/RlCallnoShelf">
 
                     <TextView
+                        android:id="@+id/tv_shelfno_b_main"
                         style="@style/TvCallnoShelf"
                         android:text="@string/shelf_face_b" />
 
@@ -267,10 +273,12 @@
                     android:contentDescription="@string/guider" />
 
                 <TextView
+                    android:id="@+id/tv_callno_b_main"
                     style="@style/TvCallnoShelfNumber"
                     android:text="@string/shelf_callno_b" />
 
                 <TextView
+                    android:id="@+id/tv_shelfno_b_desp_main"
                     style="@style/TvCallnoShelfContent"
                     android:text="@string/shelf_callno_b_class" />
 

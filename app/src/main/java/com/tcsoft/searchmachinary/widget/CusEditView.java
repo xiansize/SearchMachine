@@ -45,7 +45,7 @@ public class CusEditView extends AppCompatEditText {
         // 默认设置隐藏图标
         setClearIconVisible(true);
         //输入字离输入框的边界
-        setPadding(dip2px(5), dip2px(3), dip2px(5), dip2px(3));
+        setPadding(dip2px(3), dip2px(3), dip2px(3), dip2px(3));
         // 设置输入框里面内容发生改变的监听
         addTextChangedListener(watcher);
     }

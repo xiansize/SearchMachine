@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg2"
+    android:orientation="vertical"
+    tools:context="com.tcsoft.searchmachinary.activity.ConfigActivity">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="UselessParent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TvTitleConfig"
+                android:text="@string/config" />
+
+
+            <LinearLayout
+                style="@style/LlConfigContainer"
+                tools:ignore="UselessParent">
+
+                <TextView
+                    style="@style/TvConfigEditTitle"
+                    android:text="@string/libcode" />
+
+                <EditText
+                    android:id="@+id/et_libcode_config"
+                    style="@style/EtConfigTitle" />
+
+                <Button
+                    android:id="@+id/btn_libcode_config"
+                    style="@style/BtnConfigTitle" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/LlConfigContainer"
+                tools:ignore="UselessParent">
+
+                <TextView
+                    style="@style/TvConfigEditTitle"
+                    android:text="@string/citycode" />
+
+                <EditText
+                    android:id="@+id/et_weather_city_code_config"
+                    style="@style/EtConfigTitle" />
+
+                <Button
+                    android:id="@+id/btn_weather_city_code_config"
+                    style="@style/BtnConfigTitle" />
+
+            </LinearLayout>
+
+
+            <TextView
+                style="@style/TvTitleConfig"
+                android:layout_marginTop="60dp"
+                android:text="@string/notification" />
+
+            <LinearLayout
+                style="@style/LlConfigContainer"
+                tools:ignore="UselessParent">
+
+                <TextView
+                    style="@style/TvConfigEditTitle"
+
+                    android:text="@string/libname" />
+
+                <EditText
+                    android:id="@+id/et_lib_name_config"
+                    style="@style/EtConfigTitle" />
+
+                <Button
+                    android:id="@+id/btn_lib_name_config"
+                    style="@style/BtnConfigTitle" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/LlConfigContainer"
+                tools:ignore="UselessParent">
+
+                <TextView
+                    style="@style/TvConfigEditTitle"
+                    android:text="@string/noticeDate" />
+
+                <EditText
+                    android:id="@+id/et_notice_date_config"
+                    style="@style/EtConfigTitle"
+                    tools:ignore="TextFields" />
+
+                <Button
+                    android:id="@+id/btn_notice_date_config"
+                    style="@style/BtnConfigTitle" />
+
+            </LinearLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:padding="10dp"
+                android:background="@android:color/white">
+
+                <EditText
+                    android:id="@+id/et_notice_content_config"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:inputType="textMultiLine"
+                    android:minLines="3"
+                    android:maxLines="6"
+                    android:gravity="top"
+                    android:scrollbars="vertical"
+                    android:textSize="14sp"
+                    android:singleLine="false" />
+
+            </RelativeLayout>
+
+
+            <LinearLayout
+                style="@style/LlConfigContainer"
+                android:layout_marginTop="0dp"
+                tools:ignore="UselessParent">
+
+                <TextView
+                    style="@style/TvConfigEditTitle"
+                    android:background="@android:color/darker_gray"
+                    android:text="@string/noticeContent" />
+
+                <Button
+                    android:id="@+id/btn_notice_content_config"
+                    style="@style/BtnConfigTitle"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <TextView
+                style="@style/TvTitleConfig"
+                android:layout_marginTop="60dp"
+                android:text="@string/shelfInfo" />
+
+            <LinearLayout
+                style="@style/LlConfigContainer"
+                tools:ignore="UselessParent">
+
+                <TextView
+                    style="@style/TvConfigEditTitle"
+                    android:text="@string/shelfno_a" />
+
+                <EditText
+                    android:id="@+id/et_shelf_no_a_config"
+                    style="@style/EtConfigTitle" />
+
+                <Button
+                    android:id="@+id/btn_shelf_no_a_config"
+                    style="@style/BtnConfigTitle" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/LlConfigContainer"
+                android:layout_marginTop="8dp"
+                tools:ignore="UselessParent">
+
+                <TextView
+                    style="@style/TvConfigEditTitle"
+                    android:text="@string/callno_a" />
+
+                <EditText
+                    android:id="@+id/et_callno_a_config"
+                    style="@style/EtConfigTitle" />
+
+                <Button
+                    android:id="@+id/btn_callno_a_config"
+                    style="@style/BtnConfigTitle" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/LlConfigContainer"
+                android:layout_marginTop="8dp"
+                tools:ignore="UselessParent">
+
+                <TextView
+                    style="@style/TvConfigEditTitle"
+                    android:text="@string/shelfno_desp_a" />
+
+                <EditText
+                    android:id="@+id/et_shelf_desp_a_config"
+                    style="@style/EtConfigTitle" />
+
+                <Button
+                    android:id="@+id/btn_shelf_desp_a_config"
+                    style="@style/BtnConfigTitle" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/LlConfigContainer"
+                tools:ignore="UselessParent">
+
+                <TextView
+                    style="@style/TvConfigEditTitle"
+                    android:text="@string/shelfno_b" />
+
+                <EditText
+                    android:id="@+id/et_shelf_no_b_config"
+                    style="@style/EtConfigTitle" />
+
+                <Button
+                    android:id="@+id/btn_shelf_no_b_config"
+                    style="@style/BtnConfigTitle" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/LlConfigContainer"
+                android:layout_marginTop="8dp"
+                tools:ignore="UselessParent">
+
+                <TextView
+                    style="@style/TvConfigEditTitle"
+                    android:text="@string/callno_b" />
+
+                <EditText
+                    android:id="@+id/et_callno_b_config"
+                    style="@style/EtConfigTitle" />
+
+                <Button
+                    android:id="@+id/btn_callno_b_config"
+                    style="@style/BtnConfigTitle" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/LlConfigContainer"
+                android:layout_marginTop="8dp"
+                tools:ignore="UselessParent">
+
+                <TextView
+                    style="@style/TvConfigEditTitle"
+                    android:text="@string/shelfno_desp_b" />
+
+                <EditText
+                    android:id="@+id/et_shelf_desp_b_config"
+                    style="@style/EtConfigTitle" />
+
+                <Button
+                    android:id="@+id/btn_shelf_desp_b_config"
+                    style="@style/BtnConfigTitle" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>
