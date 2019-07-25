@@ -54,7 +54,7 @@
     <string name="all_question">常见问题</string>
     <string name="search_no_result">无“%s”相关图书</string>
     <string name="search_loading">加载中…</string>
-    <string name="search_end">没有更多了。</string>
+    <string name="search_end">没有更多的了。</string>
     <string name="search_type">[%s]</string>
 
 

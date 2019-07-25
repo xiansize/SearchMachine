@@ -34,8 +34,8 @@ public class LoadWrapper extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
 
-    public void setStatusLoading(int statusLoading) {
-        this.statusLoading = statusLoading;
+    public void setStatusLoading() {
+        this.statusLoading = 0;
         notifyDataSetChanged();
     }
 

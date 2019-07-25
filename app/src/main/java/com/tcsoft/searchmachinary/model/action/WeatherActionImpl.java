@@ -14,9 +14,7 @@ import com.tcsoft.searchmachinary.model.listener.ActionListener;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-/**
- * Created by Admin on 2019/6/18.
- */
+
 public class WeatherActionImpl implements WeatherAction {
 
     private static final String TAG = "WeatherActionImpl";

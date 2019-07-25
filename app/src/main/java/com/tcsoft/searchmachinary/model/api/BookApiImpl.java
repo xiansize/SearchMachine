@@ -42,7 +42,7 @@ public class BookApiImpl implements BookApi {
         form.add("isbns", isbn);
         form.add("callback", "showCovers");
 
-        return HttpUtil.httpPost(form, "http://api.interlib.com.cn:16690/interlibopac/websearch/metares");
+        return HttpUtil.httpPost(form, "https://book-resource.dataesb.com/websearch/metares");
     }
 
 

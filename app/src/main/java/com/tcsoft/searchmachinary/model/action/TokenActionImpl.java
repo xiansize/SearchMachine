@@ -1,6 +1,6 @@
 package com.tcsoft.searchmachinary.model.action;
 
-import android.content.Context;
+
 import android.util.Log;
 
 import com.tcsoft.searchmachinary.config.Constant;
@@ -13,9 +13,7 @@ import com.tcsoft.searchmachinary.model.listener.ActionListener;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-/**
- * Created by Admin on 2019/5/22.
- */
+
 public class TokenActionImpl implements TokenAction {
 
     private TokenApi tokenApi;

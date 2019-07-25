@@ -3,12 +3,14 @@
     <string-array name="type">
         <item>题名</item>
         <item>著者</item>
+        <item>条码</item>
         <item>ISBN</item>
     </string-array>
 
     <string-array name="type_search">
         <item>title</item>
         <item>author</item>
+        <item>barcode</item>
         <item>isbn</item>
     </string-array>
 </resources>

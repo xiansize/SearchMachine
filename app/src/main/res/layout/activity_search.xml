@@ -32,14 +32,7 @@
                 android:layout_height="360dp"/>
 
 
-        <TextView
-            android:id="@+id/tv_no_result_search"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:layout_centerInParent="true"
-            android:textSize="18sp"
-            android:textColor="@android:color/white"/>
+
 
 
     </RelativeLayout>

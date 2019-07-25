@@ -6,7 +6,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -16,7 +15,6 @@ import com.tcsoft.searchmachinary.adapter.ConsultAdapter;
 import com.tcsoft.searchmachinary.bean.Consult;
 import com.tcsoft.searchmachinary.presenter.AdvisePresenter;
 import com.tcsoft.searchmachinary.view.AdviseView;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +28,7 @@ public class AdviseActivity extends BaseActivity implements View.OnClickListener
     private ConsultAdapter consultAdapter;
     private RecyclerView rvConsult;
     private EditText etClient;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

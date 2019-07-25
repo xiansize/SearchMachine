@@ -316,7 +316,7 @@ public class BookActionImpl implements BookAction {
                         listener.onSuccess(map);
 
 
-                    } catch (JSONException e) {
+                    } catch (Exception e) {
                         listener.onFailure(TAG, "连接异常");
                     }
 

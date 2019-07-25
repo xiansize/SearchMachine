@@ -9,7 +9,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
+
+import com.bumptech.glide.Glide;
 import com.tcsoft.searchmachinary.R;
 import com.tcsoft.searchmachinary.adapter.HoldingAdapter;
 import com.tcsoft.searchmachinary.bean.Book;
@@ -93,7 +94,7 @@ public class BookActivity extends BaseActivity implements View.OnClickListener, 
 
     @Override
     public void showBookDetails(Book book) {
-        Picasso.with(this).load(book.getCover()).placeholder(R.drawable.icon_nocover).error(R.drawable.icon_nocover).into(ivCover);
+        Glide.with(this).load(book.getCover()).placeholder(R.drawable.icon_nocover).error(R.drawable.icon_nocover).into(ivCover);
         tvBookTitle.setText(book.getTitle());
         tvAuthor.setText(String.format(getResources().getString(R.string.book_author), book.getAuthor()));
         tvPublisher.setText(String.format(getResources().getString(R.string.book_publisher), book.getPublisher(), book.getPubDate()));

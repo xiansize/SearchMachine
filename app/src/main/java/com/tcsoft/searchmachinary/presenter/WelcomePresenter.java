@@ -16,9 +16,6 @@ import com.tcsoft.searchmachinary.utils.FileUtil;
 import com.tcsoft.searchmachinary.utils.SpUtil;
 import com.tcsoft.searchmachinary.view.WelcomeView;
 
-/**
- * Created by Admin on 2019/7/9.
- */
 
 public class WelcomePresenter extends BasePresenter<WelcomeView> {
 
@@ -89,6 +86,9 @@ public class WelcomePresenter extends BasePresenter<WelcomeView> {
             getToken();
         }
     }
+
+
+
 
 
 }

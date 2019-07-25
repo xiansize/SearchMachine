@@ -25,6 +25,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     private MainPresenter mainPresenter;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +56,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         tvTitleBar.setOnClickListener(this);
 
         Spinner spType = findViewById(R.id.sp_type_main);
-        ArrayAdapter<String> selectedAdapter = new ArrayAdapter<String>(this, R.layout.layout_spinner_selected, getResources().getStringArray(R.array.type));
+        ArrayAdapter<String> selectedAdapter = new ArrayAdapter<>(this, R.layout.layout_spinner_selected, getResources().getStringArray(R.array.type));
         selectedAdapter.setDropDownViewResource(R.layout.layout_spinner_drop);
         spType.setAdapter(selectedAdapter);
         spType.setOnItemSelectedListener(this);

@@ -16,6 +16,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <meta-data
+            android:name="com.tcsoft.searchmachinary.glide.UnsafeOkHttpGlideModule"
+            android:value="GlideModule" />
+
         <activity android:name=".activity.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,7 +31,7 @@
         <activity android:name=".activity.BookActivity" />
         <activity android:name=".activity.AdviseActivity" />
         <activity android:name=".activity.MainActivity" />
-        <activity android:name=".activity.ConfigActivity"></activity>
+        <activity android:name=".activity.ConfigActivity" />
     </application>
 
 </manifest>

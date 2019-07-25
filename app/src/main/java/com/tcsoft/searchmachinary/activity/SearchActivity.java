@@ -14,7 +14,6 @@ import android.widget.TextView;
 import com.tcsoft.searchmachinary.R;
 import com.tcsoft.searchmachinary.adapter.LoadWrapper;
 import com.tcsoft.searchmachinary.adapter.SearchAdapter;
-import com.tcsoft.searchmachinary.adapter.SearchBookAdapter;
 import com.tcsoft.searchmachinary.bean.Book;
 import com.tcsoft.searchmachinary.presenter.SearchPresenter;
 import com.tcsoft.searchmachinary.view.SearchView;
@@ -56,7 +55,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
         SearchAdapter searchAdapter = new SearchAdapter(searchList, this);
         searchAdapter.setOnClickListener(this);
         if (getIntent().getStringExtra("TITLE").equals(getResources().getString(R.string.hot_book_title))) {
-            searchAdapter.setRanking(true);
+            searchAdapter.setRanking();
             rvSearch.setLayoutManager(new GridLayoutManager(this, 1, LinearLayoutManager.VERTICAL, false));
         } else
             rvSearch.setLayoutManager(new GridLayoutManager(this, 2, LinearLayoutManager.VERTICAL, false));
@@ -112,13 +111,13 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
 
     @Override
     public void showEnd() {
-        loadWrapper.setStatusLoading(0);
+        loadWrapper.setStatusLoading();
     }
 
     @Override
     public void showHotBook(List<Book> list) {
         searchList.addAll(list);
-        loadWrapper.setStatusLoading(0);
+        loadWrapper.setStatusLoading();
     }
 
     @Override
@@ -130,9 +129,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
 
     @Override
     public void showNoResult(String key) {
-        TextView tvNoResult = findViewById(R.id.tv_no_result_search);
-        tvNoResult.setVisibility(View.VISIBLE);
-        tvNoResult.setText(key);
+        loadWrapper.setStatusLoading();
     }
 
 

@@ -29,8 +29,8 @@ public class SearchPresenter extends BasePresenter<SearchView> {
 
 
     public SearchPresenter(SearchView searchView, Context context) {
-        this.searchView = searchView;
         this.bookAction = new BookActionImpl();
+        this.searchView = searchView;
         this.context = context;
     }
 

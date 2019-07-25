@@ -7,9 +7,6 @@ import com.tcsoft.searchmachinary.utils.FileUtil;
 
 import java.util.List;
 
-/**
- * Created by Admin on 2019/6/19.
- */
 
 public class FileActionImpl implements FileAction {
 

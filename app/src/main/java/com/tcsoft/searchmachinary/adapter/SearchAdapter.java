@@ -11,15 +11,13 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
+
+import com.bumptech.glide.Glide;
 import com.tcsoft.searchmachinary.R;
 import com.tcsoft.searchmachinary.bean.Book;
 
 import java.util.List;
 
-/**
- * Created by Admin on 2019/7/12.
- */
 
 public class SearchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements View.OnClickListener {
 
@@ -31,13 +29,13 @@ public class SearchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     private OnClickListener itemOnClickListener;
 
 
-    public SearchAdapter(List<Book> list,Context context) {
+    public SearchAdapter(List<Book> list, Context context) {
         this.context = context;
         this.list = list;
     }
 
-    public void setRanking(boolean ranking) {
-        isRanking = ranking;
+    public void setRanking() {
+        isRanking = true;
     }
 
 
@@ -82,7 +80,7 @@ public class SearchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         searchViewHolder.tvAuthor.setText(list.get(position).getAuthor());
         searchViewHolder.tvPublisher.setText(list.get(position).getPublisher());
         searchViewHolder.tvCallno.setText(list.get(position).getCallNo());
-        Picasso.with(context).load(list.get(position).getCover()).placeholder(R.drawable.icon_nocover).error(R.drawable.icon_nocover).into(searchViewHolder.ivCover);
+        Glide.with(context).load(list.get(position).getCover()).placeholder(R.drawable.icon_nocover).error(R.drawable.icon_nocover).into(searchViewHolder.ivCover);
         holder.itemView.setTag(position);
     }
 

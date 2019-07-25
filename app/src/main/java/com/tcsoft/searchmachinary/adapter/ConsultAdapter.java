@@ -31,23 +31,23 @@ public class ConsultAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        if(viewType == IS_CLIENT){
-            View view = LayoutInflater.from(context).inflate(R.layout.layout_item_advise_client,parent,false);
+        if (viewType == IS_CLIENT) {
+            View view = LayoutInflater.from(context).inflate(R.layout.layout_item_advise_client, parent, false);
             return new ViewHolderClient(view);
-        }else{
-            View view = LayoutInflater.from(context).inflate(R.layout.layout_item_advise_service,parent,false);
+        } else {
+            View view = LayoutInflater.from(context).inflate(R.layout.layout_item_advise_service, parent, false);
             return new ViewHolderService(view);
         }
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        if(holder instanceof ViewHolderClient){
+        if (holder instanceof ViewHolderClient) {
             ((ViewHolderClient) holder).tvClientText.setText(list.get(position).getText());
             ((ViewHolderClient) holder).tvClientTime.setText(list.get(position).getTime());
-        }else {
-            ((ViewHolderService)holder).tvServiceText.setText(list.get(position).getText());
-            ((ViewHolderService)holder).tvServiceTime.setText(list.get(position).getTime());
+        } else {
+            ((ViewHolderService) holder).tvServiceText.setText(list.get(position).getText());
+            ((ViewHolderService) holder).tvServiceTime.setText(list.get(position).getTime());
         }
     }
 

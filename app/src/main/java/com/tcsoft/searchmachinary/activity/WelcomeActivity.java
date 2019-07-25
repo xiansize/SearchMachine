@@ -4,9 +4,7 @@ package com.tcsoft.searchmachinary.activity;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.util.Log;
 import android.widget.TextView;
-
 import com.tcsoft.searchmachinary.R;
 import com.tcsoft.searchmachinary.presenter.WelcomePresenter;
 import com.tcsoft.searchmachinary.view.WelcomeView;
@@ -16,7 +14,7 @@ public class WelcomeActivity extends BaseActivity implements WelcomeView {
 
     private WelcomePresenter welcomePresenter;
     private TextView tvTips;
-    private static final String TAG = "WelcomeActivity";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
