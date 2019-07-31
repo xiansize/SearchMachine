@@ -1,5 +1,6 @@
 package com.tcsoft.searchmachinary.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import com.tcsoft.searchmachinary.R;
 import com.tcsoft.searchmachinary.config.Constant;
 import com.tcsoft.searchmachinary.presenter.MainPresenter;
+import com.tcsoft.searchmachinary.service.TokenService;
 import com.tcsoft.searchmachinary.view.MainView;
 import com.tcsoft.searchmachinary.widget.NotificationDialog;
 
@@ -32,6 +34,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         setContentView(R.layout.activity_main);
         init();
         initView();
+        startService();
     }
 
 
@@ -42,10 +45,17 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     }
 
 
+    private void startService() {
+        Intent intent = new Intent(this, TokenService.class);
+        startService(intent);
+    }
+
+
     private void init() {
         mainPresenter = new MainPresenter(this, this);
         mainPresenter.attachView(this);
         mainPresenter.getFileContent();
+        mainPresenter.getWeatherInfo();
     }
 
 

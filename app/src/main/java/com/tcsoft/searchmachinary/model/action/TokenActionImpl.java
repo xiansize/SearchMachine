@@ -45,7 +45,7 @@ public class TokenActionImpl implements TokenAction {
 
                     }
                 } else {
-                    listener.onFailure(TAG, "获取token异常");
+                    listener.onFailure(TAG, "获取token失败");
                 }
             }
         });

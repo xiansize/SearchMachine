@@ -48,11 +48,7 @@ public class MainPresenter extends BasePresenter<MainView> {
         fileAction.getFileContent(new ActionListener<List<String>>() {
             @Override
             public void onSuccess(List<String> list) {
-                Constant.libCode = list.get(0);
-                Constant.libName = list.get(1);
-                Constant.noticeContent = list.get(2);
-                Constant.noticeDate = list.get(3);
-                Constant.cityCode = list.get(4);
+
             }
 
             @Override

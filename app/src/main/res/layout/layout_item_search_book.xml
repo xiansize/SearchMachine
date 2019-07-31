@@ -2,8 +2,9 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="84dp"
-    android:background="@drawable/bg_book">
+    android:layout_height="80dp"
+    android:background="@drawable/shape_book_item"
+    android:layout_margin="6dp">
 
 
     <ImageView
@@ -11,7 +12,7 @@
         android:layout_width="40dp"
         android:layout_height="60dp"
         android:layout_marginTop="12dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginRight="4dp"
         android:contentDescription="@string/cover"
         android:background="@drawable/icon_nocover"/>
@@ -31,6 +32,7 @@
         <TextView
             android:id="@+id/tv_title_item_search_book"
             style="@style/TvBookInfoSearchBookItem"
+            android:maxLines="2"
             android:textSize="10sp"
             android:layout_marginBottom="4dp"
             />
@@ -54,7 +56,6 @@
         android:id="@+id/ll_ranking_item_book_search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
         android:layout_marginRight="34dp"
         android:layout_alignParentRight="true"
         android:gravity="center_horizontal"

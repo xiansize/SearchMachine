@@ -50,10 +50,10 @@ public class SearchPresenter extends BasePresenter<SearchView> {
     }
 
 
-    public void getList(boolean canLoan) {
+    public void getList() {
         if (searchTitle.contains(context.getResources().getString(R.string.key_search))) {
             String sTitle = searchTitle.split(context.getResources().getString(R.string.key_search))[1];
-            getSearchList(searchType, sTitle, mPage, canLoan);
+            getSearchList(searchType, sTitle, mPage);
         } else if (searchTitle.equals(context.getResources().getString(R.string.new_book_title)))
             getNewBookList(mPage);
         else if (searchTitle.equals(context.getResources().getString(R.string.hot_book_title)))
@@ -106,9 +106,9 @@ public class SearchPresenter extends BasePresenter<SearchView> {
     }
 
 
-    private void getSearchList(String type, final String title, final int page, boolean canLoan) {
+    private void getSearchList(String type, final String title, final int page) {
         if (!isViewAttached()) return;
-        bookAction.searchBook(type, title, String.valueOf(page), canLoan, new ActionListener<Search>() {
+        bookAction.searchBook(type, title, String.valueOf(page),  new ActionListener<Search>() {
             @Override
             public void onSuccess(Search search) {
                 pTotal = search.getTotal();

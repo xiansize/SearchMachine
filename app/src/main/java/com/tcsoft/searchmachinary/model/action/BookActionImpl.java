@@ -141,7 +141,7 @@ public class BookActionImpl implements BookAction {
 
 
     @Override
-    public void searchBook(final String type, final String title, final String page, boolean onlyCanLoan, final ActionListener<Search> listener) {
+    public void searchBook(final String type, final String title, final String page, final ActionListener<Search> listener) {
         AsyncTaskAction asyncTaskAction = new AsyncTaskAction(new AsyncTaskListener<String>() {
             @Override
             public String background() {

@@ -22,7 +22,6 @@ public class WelcomeActivity extends BaseActivity implements WelcomeView {
         setContentView(R.layout.activity_welcome);
         initView();
         init();
-
     }
 
 
@@ -70,9 +69,11 @@ public class WelcomeActivity extends BaseActivity implements WelcomeView {
     }
 
 
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
         welcomePresenter.detachView();
     }
+
 }

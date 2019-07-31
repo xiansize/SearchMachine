@@ -42,12 +42,12 @@ public class BookApiImpl implements BookApi {
         form.add("isbns", isbn);
         form.add("callback", "showCovers");
 
-        return HttpUtil.httpPost(form, "https://book-resource.dataesb.com/websearch/metares");
+        return HttpUtil.httpPost(form, Config.PATH_BOOK_COVER);
     }
 
 
     @Override
     public String consultant(String msg) {
-        return HttpUtil.httpGet("http://rc.interlib.com.cn:82/rc/web/api/kb/wx/getkblist.html?keyContent=" + msg + "&globalLibraryCode=WX_TEST_LIB");
+        return HttpUtil.httpGet(Config.PATH_CONSULT + "?keyContent=" + msg + "&globalLibraryCode=WX_TEST_LIB");
     }
 }

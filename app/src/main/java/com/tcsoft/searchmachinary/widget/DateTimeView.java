@@ -8,9 +8,7 @@ import android.util.AttributeSet;
 
 import com.tcsoft.searchmachinary.utils.TimeUtil;
 
-/**
- * Created by Admin on 2019/6/19.
- */
+
 
 public class DateTimeView extends android.support.v7.widget.AppCompatTextView{
 

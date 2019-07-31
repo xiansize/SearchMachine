@@ -13,7 +13,7 @@ public interface BookAction {
 
     void hotBook(ActionListener<Search> listener);
 
-    void searchBook(String type,String title,String page,boolean onlyCanLoan,ActionListener<Search> listener);
+    void searchBook(String type,String title,String page,ActionListener<Search> listener);
 
     void getBookDetails(Book book,ActionListener<Book> listener);
 

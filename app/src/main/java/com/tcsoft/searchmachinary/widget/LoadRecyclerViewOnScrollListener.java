@@ -3,9 +3,7 @@ package com.tcsoft.searchmachinary.widget;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-/**
- * Created by Admin on 2019/6/25.
- */
+
 
 public abstract class LoadRecyclerViewOnScrollListener extends RecyclerView.OnScrollListener{
 

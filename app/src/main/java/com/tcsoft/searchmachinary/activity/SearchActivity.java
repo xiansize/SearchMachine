@@ -6,7 +6,6 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -26,13 +25,10 @@ import static com.tcsoft.searchmachinary.config.Constant.weather;
 
 public class SearchActivity extends BaseActivity implements View.OnClickListener, SearchView, SearchAdapter.OnClickListener {
 
-
     private SearchPresenter searchPresenter;
     private List<Book> searchList;
-    private CheckBox cbLoan;
 
     private LoadWrapper loadWrapper;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +44,6 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
         llBackpress.setOnClickListener(this);
         TextView tvTitle = findViewById(R.id.tv_key_base);
         tvTitle.setText(getIntent().getStringExtra("TITLE"));
-        cbLoan = findViewById(R.id.cb_can_loan);
 
         RecyclerView rvSearch = findViewById(R.id.rv_search);
         searchList = new ArrayList<>();
@@ -72,7 +67,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
         searchPresenter.setSearchTitle(getIntent().getStringExtra("TITLE"));
         searchPresenter.setSearchType(getResources().getStringArray(R.array.type_search)[getIntent().getIntExtra("POSITION", 0)]);
         searchPresenter.showWeather();
-        searchPresenter.getList(cbLoan.isChecked());
+        searchPresenter.getList();
     }
 
 
@@ -155,7 +150,7 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
     class LoadingListener extends LoadRecyclerViewOnScrollListener {
         @Override
         public void onLoadMore() {
-            searchPresenter.getList(cbLoan.isChecked());
+            searchPresenter.getList();
         }
     }
 }
