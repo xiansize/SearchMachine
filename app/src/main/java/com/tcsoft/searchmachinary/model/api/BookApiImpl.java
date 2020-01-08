@@ -16,7 +16,7 @@ public class BookApiImpl implements BookApi {
 
     @Override
     public String newBook(String page) {
-        return HttpUtil.httpGet(Config.PATH_OPAC + "/search?isFacet=false&view=json&queryType=search_newpublications&searchType=newpub&limitStartDate=2019-" + TimeUtil.getMonth() + "-01&limitEndDate=2019-" + TimeUtil.getMonth() + "-30&return_fmt=json&page=" + page);
+        return HttpUtil.httpGet(Config.PATH_OPAC + "/search?isFacet=false&view=json&queryType=search_newpublications&searchType=newpub&limitStartDate=2019-" + TimeUtil.getMonth() + "-01&limitEndDate=2019-" + TimeUtil.getMonth() + "-30&return_fmt=json&page=" + page+"&rows=20");
     }
 
     @Override

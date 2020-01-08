@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg2"
+    android:orientation="vertical"
     tools:context="com.tcsoft.searchmachinary.activity.BookActivity">
 
     <include
         android:id="@+id/title_base_main"
-        layout="@layout/layout_base" />
+        layout="@layout/layout_base"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"/>
 
     <RelativeLayout
         style="@style/BgContainerInfo"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title_base_main">
+        android:layout_weight="2">
 
 
         <include
@@ -24,18 +26,19 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="360dp"
+            android:layout_height="match_parent"
             android:layout_below="@id/ll_key_base"
             android:layout_marginLeft="12dp"
             android:layout_marginRight="12dp"
             android:background="#22FFFFFF"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp">
 
 
             <LinearLayout
                 android:id="@+id/ll_cover_book_details"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
                 android:layout_weight="2.4"
                 android:gravity="center_horizontal"
@@ -43,24 +46,37 @@
 
                 <ImageView
                     android:id="@+id/iv_cover_book_details"
-                    android:layout_width="64dp"
-                    android:layout_height="84dp"
+                    android:layout_width="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:background="@drawable/icon_nocover"
                     android:contentDescription="@string/cover" />
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="2"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal">
 
-                <TextView
-                    android:id="@+id/tv_canloan_book_details"
-                    style="@style/TvBookInfoBookDetailsItem"
-                    android:layout_marginTop="10dp" />
+                    <TextView
+                        android:id="@+id/tv_canloan_book_details"
+                        style="@style/TvBookInfoBookDetailsItem"
+                        android:layout_marginTop="10dp" />
 
-                <TextView
-                    android:id="@+id/tv_shelf_num_book_details"
-                    style="@style/TvBookInfoBookDetailsItem" />
+                    <TextView
+                        android:id="@+id/tv_shelf_num_book_details"
+                        style="@style/TvBookInfoBookDetailsItem" />
 
-                <TextView
-                    android:id="@+id/tv_reading_num_book_details"
-                    style="@style/TvBookInfoBookDetailsItem" />
+                    <TextView
+                        android:id="@+id/tv_reading_num_book_details"
+                        style="@style/TvBookInfoBookDetailsItem" />
+
+                </LinearLayout>
+
+
+
 
 
             </LinearLayout>
@@ -77,7 +93,8 @@
                     android:id="@+id/tv_title_book_details"
                     style="@style/TvBookInfoBookDetailsItem"
                     android:layout_marginBottom="4dp"
-                    android:textSize="12sp" />
+                    android:textSize="16sp"
+                    />
 
 
                 <TextView
@@ -127,4 +144,9 @@
 
     </RelativeLayout>
 
-</android.support.constraint.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+</LinearLayout>

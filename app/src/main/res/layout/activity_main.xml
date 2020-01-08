@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg2"
+    android:orientation="vertical"
     tools:context="com.tcsoft.searchmachinary.activity.MainActivity">
 
     <include
         android:id="@+id/title_base_main"
-        layout="@layout/layout_base" />
+        layout="@layout/layout_base"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
 
     <LinearLayout
         android:id="@+id/ll_book_push_main"
         style="@style/LlBookPush"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title_base_main">
+        android:layout_weight="2">
 
         <RelativeLayout
             android:id="@+id/rl_new_book_main"
@@ -28,35 +29,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/bg_new_book" />
+                android:background="@drawable/icon_new" />
 
-
-            <TextView
-                android:id="@+id/tv_big_new_main"
-                style="@style/TvBookPushFontBig"
-                android:text="@string/new_font" />
-
-            <TextView
-                style="@style/TvBookPushFont"
-                android:layout_toEndOf="@id/tv_big_new_main"
-                android:layout_toRightOf="@id/tv_big_new_main"
-                android:text="@string/new_book" />
-
-
-            <TextView
-                style="@style/TvBookPushFontEnglish"
-                android:layout_below="@id/tv_big_new_main"
-                android:text="@string/new_book_english" />
-
-
-            <ImageView
-                style="@style/IvTriangle"
-                android:contentDescription="@string/guider" />
-
-
-            <TextView
-                style="@style/TvBookPushFontBigEnglish"
-                android:text="@string/new_font_english" />
 
         </RelativeLayout>
 
@@ -69,33 +43,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/bg_hot_book" />
-
-            <TextView
-                android:id="@+id/tv_big_hot_main"
-                style="@style/TvBookPushFontBig"
-                android:text="@string/hot_font" />
-
-            <TextView
-                style="@style/TvBookPushFont"
-                android:layout_toEndOf="@id/tv_big_hot_main"
-                android:layout_toRightOf="@id/tv_big_hot_main"
-                android:text="@string/hot_book" />
-
-            <TextView
-                style="@style/TvBookPushFontEnglish"
-                android:layout_below="@id/tv_big_hot_main"
-                android:text="@string/hot_book_english" />
-
-
-            <ImageView
-                style="@style/IvTriangle"
-                android:contentDescription="@string/guider" />
-
-            <TextView
-                style="@style/TvBookPushFontBigEnglish"
-                android:text="@string/hot_font_english" />
-
+                android:background="@drawable/icon_hot" />
 
         </RelativeLayout>
     </LinearLayout>
@@ -104,11 +52,9 @@
     <LinearLayout
         android:id="@+id/ll_input_search_text"
         style="@style/LlInputText"
+        android:layout_weight="1"
         android:focusable="true"
-        android:focusableInTouchMode="true"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ll_book_push_main">
+        android:focusableInTouchMode="true">
 
 
         <Spinner
@@ -129,14 +75,14 @@
 
         <RelativeLayout
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="50dp"
             android:layout_weight="1"
             android:padding="8dp">
 
             <ImageView
                 android:id="@+id/iv_voice_input_main"
                 android:layout_width="26dp"
-                android:layout_height="match_parent"
+                android:layout_height="50dp"
                 android:layout_centerInParent="true"
                 android:background="@drawable/icon_voice" />
 
@@ -169,6 +115,7 @@
     <LinearLayout
         android:id="@+id/ll_notification_main"
         style="@style/LlNotification"
+        android:layout_weight="1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ll_input_search_text">
@@ -209,7 +156,7 @@
     <LinearLayout
         android:id="@+id/rl_callNo_main"
         style="@style/LlCallno"
-        app:layout_constraintTop_toBottomOf="@id/ll_notification_main">
+        android:layout_weight="3">
 
 
         <RelativeLayout style="@style/RlTurnCallno">
@@ -304,16 +251,24 @@
 
 
     <RelativeLayout
-        android:id="@+id/rl_consult_main"
-        style="@style/RlConsult"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/rl_callNo_main">
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4">
 
-        <ImageView
-            style="@style/IvConsult"
-            android:contentDescription="@string/guider" />
+        <RelativeLayout
+            android:id="@+id/rl_consult_main"
+            style="@style/RlConsult"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true">
+
+            <ImageView
+                style="@style/IvConsult"
+                android:contentDescription="@string/guider" />
+
+        </RelativeLayout>
+
 
     </RelativeLayout>
 
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

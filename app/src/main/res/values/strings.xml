@@ -80,9 +80,9 @@
     <string name="book_shape">载体形态：%s %s</string>
     <string name="book_summary">内容简介：%s </string>
 
-    <string name="book_canloan">可借册数：%d册</string>
-    <string name="book_shelf_num">馆藏册数：%d册</string>
-    <string name="book_reading_num">总借阅量：%d次</string>
+    <string name="book_canloan">可借：%d册</string>
+    <string name="book_shelf_num">馆藏：%d册</string>
+    <string name="book_reading_num">总借：%d次</string>
 
     <!--bookholding-->
     <string name="book_barcode">条码号</string>

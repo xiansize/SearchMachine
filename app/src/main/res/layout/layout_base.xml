@@ -32,7 +32,7 @@
             android:textSize="10sp"
             android:textColor="#FFFFFF"
             android:text="@string/date_base"
-           />
+            />
 
         <TextView
             android:id="@+id/tv_titlebar_device_name"
@@ -42,10 +42,10 @@
             android:textColor="#FFFFFF"
             android:text="@string/name_base"
             android:layout_marginTop="2dp"
-           />
+            />
 
     </LinearLayout>
-    
+
     <LinearLayout
         android:id="@+id/ll_weather_base"
         android:layout_width="wrap_content"
@@ -55,19 +55,19 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:orientation="horizontal">
-        
+
         <ImageView
             android:id="@+id/iv_weather_base"
             android:layout_width="80dp"
             android:layout_height="76dp"
             android:src="@drawable/icon_weather"/>
-        
+
         <LinearLayout
             android:id="@+id/ll_weather_location_base"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            
+
             <TextView
                 android:id="@+id/tv_temp_base"
                 android:layout_width="wrap_content"
@@ -94,7 +94,7 @@
 
 
         </LinearLayout>
-        
+
     </LinearLayout>
 
 

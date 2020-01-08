@@ -108,7 +108,7 @@ public class SearchPresenter extends BasePresenter<SearchView> {
 
     private void getSearchList(String type, final String title, final int page) {
         if (!isViewAttached()) return;
-        bookAction.searchBook(type, title, String.valueOf(page),  new ActionListener<Search>() {
+        bookAction.searchBook(type, title, String.valueOf(page), new ActionListener<Search>() {
             @Override
             public void onSuccess(Search search) {
                 pTotal = search.getTotal();
@@ -145,9 +145,11 @@ public class SearchPresenter extends BasePresenter<SearchView> {
                     searchView.showList(list);
                     if (mPage == 2 && lTotal == pTotal)
                         searchView.showEnd();
-                } else if (searchTitle.equals(context.getResources().getString(R.string.new_book_title)))
+                } else if (searchTitle.equals(context.getResources().getString(R.string.new_book_title))) {
                     searchView.showNewBook(list);
-                else if (searchTitle.equals(context.getResources().getString(R.string.hot_book_title)))
+                    if (mPage == 2 && lTotal == pTotal)
+                        searchView.showEnd();
+                } else if (searchTitle.equals(context.getResources().getString(R.string.hot_book_title)))
                     searchView.showHotBook(list);
             }
 
@@ -157,9 +159,11 @@ public class SearchPresenter extends BasePresenter<SearchView> {
                     searchView.showList(list);
                     if (mPage == 2 && lTotal == pTotal)
                         searchView.showEnd();
-                } else if (searchTitle.equals(context.getResources().getString(R.string.new_book_title)))
+                } else if (searchTitle.equals(context.getResources().getString(R.string.new_book_title))) {
                     searchView.showNewBook(list);
-                else if (searchTitle.equals(context.getResources().getString(R.string.hot_book_title)))
+                    if (mPage == 2 && lTotal == pTotal)
+                        searchView.showEnd();
+                } else if (searchTitle.equals(context.getResources().getString(R.string.hot_book_title)))
                     searchView.showHotBook(list);
             }
         });
